@@ -1,0 +1,49 @@
+{#
+  HERO (Homepage) — Phase 2 parity
+
+  Usage:
+    {% from "components/hero.njk" import hero %}
+    {{ hero() }}
+#}
+
+{% macro hero() %}
+<section class="hero hero--home" aria-label="Hero">
+  <div class="container hero__container">
+    <div class="hero-grid hero-grid--home">
+      <div class="hero-copy">
+        <h1 class="hero-title hero-title--home">
+          <span>ONES WHO PUT</span>
+          <span>IN THE WORK</span>
+        </h1>
+
+        <p class="hero-lede">
+          Every piece we make is inspired by the game and driven by one mindset:
+        </p>
+        <p class="hero-strong">
+          <strong>Show up. Put in the work. Be Better.</strong>
+        </p>
+
+        <div class="hero__cta">
+          <a class="btn btn-primary btn-lg" href="/collections/men/">SHOPNOW</a>
+        </div>
+
+        <div class="hero-promo" role="group" aria-label="Get 10% off (visual only)">
+          <span class="hero-promo__text">GET 10% OFF</span>
+          <button class="hero-promo__close" type="button" aria-label="Close promo (visual only)">✕</button>
+        </div>
+      </div>
+
+      <div class="hero-media">
+        <div class="hero-frame" aria-hidden="true">
+          <img src="/assets/img/placeholder.jpg" alt="" loading="eager" decoding="async" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="hero-chat" type="button" aria-label="Open help chat (visual only)">
+    <span class="hero-chat__dot" aria-hidden="true"></span>
+    <span class="hero-chat__label">Help</span>
+  </button>
+</section>
+{% endmacro %}

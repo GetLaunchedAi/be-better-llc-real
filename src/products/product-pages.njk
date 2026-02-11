@@ -1,0 +1,11 @@
+---
+pagination:
+  data: products.catalog
+  size: 1
+  alias: product
+permalink: "/products/{{ product.slug }}/index.html"
+layout: layouts/product.njk
+eleventyComputed:
+  title: "{{ product.title }}"
+  description: "{{ product.subtitle or '' }}"
+---

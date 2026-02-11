@@ -1,0 +1,26 @@
+{#
+  Feature strip component — Phase 2 parity
+  Usage:
+    {% from "components/feature-strip.njk" import featureStrip %}
+    {{ featureStrip(items) }}
+#}
+
+{% macro featureStrip(items) %}
+<section class="feature-strip feature-strip--footer" aria-label="Store policies">
+  <div class="container feature-strip__inner">
+    <ul class="feature-strip__list" role="list">
+      {% for item in (items or []) %}
+        <li class="feature-strip__item">
+          <p class="feature-strip__title">{{ item.title }}</p>
+          {% if item.text %}
+            <p class="feature-strip__text">{{ item.text }}</p>
+          {% endif %}
+          {% if item.url and item.linkText %}
+            <a class="feature-strip__link" href="{{ item.url }}">{{ item.linkText }} <span aria-hidden="true">→</span></a>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+{% endmacro %}

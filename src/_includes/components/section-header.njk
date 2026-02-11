@@ -1,0 +1,26 @@
+{#
+  Section header component
+  Usage:
+    {% from "components/section-header.njk" import sectionHeader %}
+    {{ sectionHeader({ eyebrow: "SHOP BY CATEGORY", title: "Youth Collection", subtitle: "...", ctaText: "VIEW ALL", ctaUrl: "/collections/youth/" }) }}
+#}
+
+{% macro sectionHeader(props) %}
+<div class="section-head section-head--{{ props.align or 'left' }}">
+  <div class="section-head__copy">
+    {% if props.eyebrow %}
+      <p class="section-eyebrow">{{ props.eyebrow }}</p>
+    {% endif %}
+    <h2 class="section-title">{{ props.title }}</h2>
+    {% if props.subtitle %}
+      <p class="section-subtitle">{{ props.subtitle }}</p>
+    {% endif %}
+  </div>
+
+  {% if props.ctaText and props.ctaUrl %}
+    <a class="btn btn-outline btn-sm section-head__cta" href="{{ props.ctaUrl }}">
+      {{ props.ctaText }} <span aria-hidden="true">→</span>
+    </a>
+  {% endif %}
+</div>
+{% endmacro %}

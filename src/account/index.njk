@@ -1,0 +1,34 @@
+---
+title: "Account"
+subtitle: "Sign in and manage your preferences."
+layout: layouts/page.njk
+breadcrumbs:
+  - label: "Home"
+    href: "/"
+  - label: "Account"
+---
+
+<p class="muted">
+  This is a placeholder account page for the static build. If you add customer accounts later (Shopify/Stripe + auth),
+  you can replace this page.
+</p>
+
+<p class="muted">
+  Admins: use the <a href="/admin/">/admin/</a> page to manage products.
+</p>
+
+<div class="card" style="padding:16px; max-width:480px;">
+  <h2 class="card-title">Sign in</h2>
+  <form class="form" method="post" data-account-form>
+    <div class="form-row">
+      <label class="label" for="account-email">Email</label>
+      <input class="input" id="account-email" type="email" autocomplete="email" />
+    </div>
+    <div class="form-row">
+      <label class="label" for="account-pass">Password</label>
+      <input class="input" id="account-pass" type="password" autocomplete="current-password" />
+    </div>
+    <button class="btn btn-primary" type="submit">Sign in</button>
+    <p class="muted" style="display:none; margin-top:10px;" data-account-feedback></p>
+  </form>
+</div>

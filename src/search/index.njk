@@ -1,0 +1,32 @@
+---
+title: "Search"
+subtitle: "Find products by name, collection, or tag."
+layout: layouts/page.njk
+breadcrumbs:
+  - label: "Home"
+    href: "/"
+  - label: "Search"
+---
+<div class="search" data-search-page>
+  <div class="search-bar" role="search" aria-label="Search products">
+    <label class="sr-only" for="search-input">Search products</label>
+    <input id="search-input" class="input" type="search" placeholder="Search products…" autocomplete="off" data-search-input />
+    <button class="btn btn-ghost" type="button" data-search-clear>Clear</button>
+  </div>
+
+  <p class="muted search-meta" data-search-meta>Type to start searching.</p>
+
+  <div class="search-loading muted" data-search-loading hidden>Loading products…</div>
+
+  <div class="search-results" data-search-results aria-live="polite"></div>
+
+  <div class="search-empty card" data-search-empty hidden>
+    <h2 class="card-title">No matches</h2>
+    <p class="muted">Try a shorter query or browse a collection.</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="/collections/sale/">Shop Sale</a>
+      <a class="btn btn-ghost" href="/collections/men/">Men</a>
+      <a class="btn btn-ghost" href="/collections/women/">Women</a>
+    </div>
+  </div>
+</div>

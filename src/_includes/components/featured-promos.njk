@@ -1,0 +1,24 @@
+{#
+  Featured promos (3-up) — Phase 2 parity
+  Usage:
+    {% from "components/featured-promos.njk" import featuredPromos %}
+    {{ featuredPromos(tiles) }}
+#}
+
+{% macro featuredPromos(tiles) %}
+<div class="featured-promos" aria-label="Featured promos">
+  <div class="featured-promos__grid">
+    {% for tile in (tiles or []) %}
+      <a class="featured-promo" href="{{ tile.url or '#' }}">
+        <div class="featured-promo__media">
+          <img class="featured-promo__img" src="{{ tile.image or '/assets/img/placeholder.jpg' }}" alt="" loading="lazy" decoding="async" />
+        </div>
+        <div class="featured-promo__caption">
+          <span class="featured-promo__text">{{ tile.caption }}</span>
+          <span class="featured-promo__arrow" aria-hidden="true">→</span>
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+</div>
+{% endmacro %}

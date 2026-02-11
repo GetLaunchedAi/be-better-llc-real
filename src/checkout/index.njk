@@ -1,0 +1,27 @@
+---
+title: "Checkout"
+subtitle: "Stripe checkout will be wired here later."
+layout: layouts/page.njk
+breadcrumbs:
+  - label: "Home"
+    href: "/"
+  - label: "Cart"
+    href: "/cart/"
+  - label: "Checkout"
+---
+
+<div class="card" style="padding:16px;">
+  <h2 class="card-title">Checkout (placeholder)</h2>
+  <p class="muted">
+    This build includes a working cart stored locally in the browser. Wire Stripe Checkout when ready.
+  </p>
+  <ol class="muted" style="margin-left:16px;">
+    <li>Create a Stripe account and get your API keys.</li>
+    <li>Add a server-side checkout session endpoint (Cloudways PHP) to create a Stripe session.</li>
+    <li>Redirect users from this page to Stripe Checkout using that session.</li>
+  </ol>
+  <div style="display:flex; gap:10px; margin-top:14px; flex-wrap:wrap;">
+    <a class="btn btn-primary" href="/cart/">Back to cart</a>
+    <a class="btn btn-outline" href="/collections/men/">Continue shopping</a>
+  </div>
+</div>

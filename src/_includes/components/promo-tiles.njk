@@ -1,0 +1,28 @@
+{#
+  Promo tiles — Holiday Deals style (Phase 2 parity)
+
+  Usage:
+    {% from "components/promo-tiles.njk" import promoTiles %}
+    {{ promoTiles(tiles) }}
+#}
+
+{% macro promoTiles(tiles) %}
+<div class="promo-tiles promo-tiles--deals" aria-label="Promotions">
+  {% for tile in (tiles or []) %}
+    <a class="promo-deal" href="{{ tile.url or '#' }}" style="background-image:url('{{ tile.image or '/assets/img/placeholder.jpg' }}')">
+      <span class="promo-deal__overlay" aria-hidden="true"></span>
+
+      <div class="promo-deal__content">
+        {% if tile.kicker %}
+          <p class="promo-deal__kicker">{{ tile.kicker }}</p>
+        {% endif %}
+        <h3 class="promo-deal__title">{{ tile.headline or tile.title }}</h3>
+
+        {% if tile.ctaText %}
+          <span class="btn btn-primary btn-sm promo-deal__btn" aria-hidden="true">{{ tile.ctaText }}</span>
+        {% endif %}
+      </div>
+    </a>
+  {% endfor %}
+</div>
+{% endmacro %}

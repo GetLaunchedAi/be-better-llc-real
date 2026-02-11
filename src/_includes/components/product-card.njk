@@ -1,0 +1,109 @@
+{#
+  Product card component
+  Usage:
+    {% from "components/product-card.njk" import productCard %}
+    {{ productCard(product) }}
+    {{ productCard(product, { variant: "giveaway" }) }}
+#}
+
+{% macro productCard(product, opts={}) %}
+  {% set variant = opts.variant or "default" %}
+  {#
+    NOTE: Nunjucks does not support JS-style ternary (`cond ? a : b`).
+    Build a safe URL for this card.
+  #}
+  {% set url = product.url or "#" %}
+  {% if (not product.url) and product.slug %}
+    {% set url = "/products/" ~ product.slug ~ "/" %}
+  {% endif %}
+
+  <article class="product-card" data-variant="{{ variant }}" data-title="{{ product.title }}" data-price="{{ product.price }}">
+    <a class="product-card__link" href="{{ url }}">
+      <div class="product-card__media">
+        <img class="product-card__img" src="{{ product.image or '/assets/img/placeholder.jpg' }}" alt="{{ product.title }}" loading="lazy" decoding="async" />
+
+        {% if product.badges and (product.badges | length) %}
+          <div class="product-card__badges" aria-label="Product badges">
+            {% for b in product.badges %}
+              {% set label = (b or "") | string %}
+              {% set l = label | lower %}
+              {% set cls = "badge--neutral" %}
+              {% if "sale" in l %}{% set cls = "badge--sale" %}{% endif %}
+              {% if "new" in l %}{% set cls = "badge--new" %}{% endif %}
+              <span class="badge {{ cls }}">{{ label }}</span>
+            {% endfor %}
+          </div>
+        {% elseif product.badge %}
+          <div class="product-card__badges" aria-label="Product badge">
+            {% set label = product.badge %}
+            {% set l = (label | lower) %}
+            {% set cls = "badge--neutral" %}
+            {% if "sale" in l %}{% set cls = "badge--sale" %}{% endif %}
+            {% if "new" in l %}{% set cls = "badge--new" %}{% endif %}
+            {% if "best" in l %}{% set cls = "badge--best" %}{% endif %}
+            <span class="badge {{ cls }}">{{ label }}</span>
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="product-card__body">
+        <h3 class="product-card__title">{{ product.title }}</h3>
+
+        {% if product.subtitle %}
+          <p class="product-card__meta">{{ product.subtitle }}</p>
+        {% endif %}
+
+        {% if product.rating %}
+          <div class="product-card__rating" aria-label="Rating">
+            <span class="rating__stars" aria-hidden="true">
+              {% set r = product.rating %}
+              {% for i in [1,2,3,4,5] %}
+                {% if r >= i %}★{% else %}☆{% endif %}
+              {% endfor %}
+            </span>
+            <span class="rating__value">{{ product.rating }}</span>
+            {% if product.reviewCount %}
+              <span class="rating__count">{{ product.reviewCount }}</span>
+            {% endif %}
+          </div>
+        {% endif %}
+
+        <div class="product-card__price" aria-label="Price">
+          <span class="price-current">${{ product.price }}</span>
+          {% if product.compareAt %}
+            <span class="price-compare">${{ product.compareAt }}</span>
+          {% endif %}
+          {% if product.discount %}
+            <span class="price-discount">{{ product.discount }}</span>
+          {% endif %}
+        </div>
+
+      </div>
+    </a>
+
+    {#
+      IMPORTANT: Actions must NOT be nested inside the <a> tag.
+      - Nested interactive elements cause click/navigation bugs.
+      - Cart system binds to [data-cart-add].
+    #}
+    <div class="product-card__actions">
+      {% if variant == "giveaway" and product.giveawayEntries %}
+        <span class="btn btn-outline btn-sm btn-entries" aria-hidden="true">{{ product.giveawayEntries }} GIVEAWAY ENTRIES</span>
+      {% else %}
+        <button
+          class="btn btn-outline btn-sm product-card__quick"
+          type="button"
+          data-cart-add
+          data-id="{{ product.id or product.slug or '' }}"
+          data-slug="{{ product.slug or '' }}"
+          data-title="{{ product.title }}"
+          data-price="{{ product.price or '0' }}"
+          data-image="{{ product.image or '/assets/img/placeholder.jpg' }}"
+          aria-label="Add {{ product.title }} to cart"
+        >
+          Add to cart
+        </button>
+      {% endif %}
+    </div>
+  </article>
+{% endmacro %}

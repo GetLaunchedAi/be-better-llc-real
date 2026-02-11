@@ -1,0 +1,31 @@
+---
+layout: layouts/base.njk
+---
+
+<section class="section page">
+  <div class="container">
+    {% if breadcrumbs %}
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        {% for crumb in breadcrumbs %}
+          {% if crumb.href %}
+            <a class="breadcrumbs__link" href="{{ crumb.href }}">{{ crumb.label }}</a>
+            <span class="breadcrumbs__sep" aria-hidden="true">/</span>
+          {% else %}
+            <span class="breadcrumbs__current" aria-current="page">{{ crumb.label }}</span>
+          {% endif %}
+        {% endfor %}
+      </nav>
+    {% endif %}
+
+    <header class="page-head">
+      <h1 class="page-title">{{ title }}</h1>
+      {% if subtitle %}
+        <p class="muted page-subtitle">{{ subtitle }}</p>
+      {% endif %}
+    </header>
+
+    <div class="page-content prose">
+      {{ content | safe }}
+    </div>
+  </div>
+</section>

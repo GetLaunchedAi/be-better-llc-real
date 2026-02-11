@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>{{ title or "Homepage" }} · Eleventy Scaffold</title>
+    <meta name="description" content="{{ description or 'A minimal Eleventy + Nunjucks scaffold with design tokens.' }}" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="/assets/css/main.css" />
+  </head>
+
+  <body class="{{ bodyClass | default('') }}">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    {% include "partials/header.njk" %}
+
+    <main id="main" tabindex="-1" class="site-main">
+      {{ content | safe }}
+    </main>
+
+    {% include "partials/footer.njk" %}
+
+    <script src="/assets/js/cart.js" defer></script>
+    <script src="/assets/js/main.js" defer></script>
+    <script src="/assets/js/search.js" defer></script>
+  </body>
+</html>

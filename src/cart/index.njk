@@ -1,0 +1,52 @@
+---
+layout: layouts/base.njk
+title: Cart
+description: Review items in your cart.
+---
+
+<section class="section cart-page" data-cart-page>
+  <div class="container">
+    <div class="cart-head">
+      <h1 class="cart-title">Your cart</h1>
+      <p class="muted cart-subtitle">Items are saved on this device using localStorage.</p>
+    </div>
+
+    <div class="cart-empty" data-cart-empty hidden>
+      <div class="card cart-empty__card">
+        <h2 class="cart-empty__title">Your cart is empty</h2>
+        <p class="muted">Start with our newest drops or check the sale.</p>
+        <div class="cart-empty__actions">
+          <a class="btn btn-primary" href="/collections/men/">Shop men</a>
+          <a class="btn btn-ghost" href="/collections/sale/">Shop sale</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="cart-layout" data-cart-wrap hidden>
+      <div class="cart-items card">
+        <div class="cart-items__head">
+          <p class="muted cart-items__label">Items</p>
+        </div>
+
+        <div class="cart-items__list" data-cart-items></div>
+      </div>
+
+      <aside class="cart-summary card" aria-label="Order summary">
+        <h2 class="cart-summary__title">Summary</h2>
+
+        <div class="cart-summary__row">
+          <span class="muted">Subtotal</span>
+          <strong data-cart-subtotal>$0.00</strong>
+        </div>
+
+        <p class="muted cart-summary__note">
+          Taxes and shipping calculated at checkout (placeholder).
+        </p>
+
+        <a class="btn btn-primary btn-lg" href="/checkout/" title="Checkout placeholder">
+          Checkout
+        </a>
+      </aside>
+    </div>
+  </div>
+</section>

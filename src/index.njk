@@ -1,0 +1,128 @@
+---
+layout: layouts/base.njk
+title: Home
+description: Be Better storefront homepage.
+---
+
+{% from "components/hero.njk" import hero %}
+{% from "components/section-header.njk" import sectionHeader %}
+{% from "components/product-card.njk" import productCard %}
+{% from "components/promo-tiles.njk" import promoTiles %}
+{% from "components/featured-promos.njk" import featuredPromos %}
+
+{{ hero() }}
+
+<section id="youth" class="section section-home">
+  <div class="container">
+    {{ sectionHeader({
+      eyebrow: "SHOP BY CATEGORY",
+      title: products.youthCollection.title,
+      subtitle: "",
+      ctaText: "VIEW ALL",
+      ctaUrl: (products.youthCollection.ctaUrl | default("/collections/youth/"))
+    }) }}
+
+    <div class="product-grid product-grid--tight" aria-label="Youth Collection products">
+      {% for p in products.youthCollection.products %}
+        {{ productCard(p, { variant: "giveaway" }) }}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section id="new-arrivals" class="section section-home section-home--tight">
+  <div class="container">
+    <div class="new-arrivals-banner" aria-label="New Arrivals banner">
+      <img class="new-arrivals-banner__img" src="/assets/img/placeholder.jpg" alt="" loading="lazy" decoding="async" />
+      <div class="new-arrivals-banner__content">
+        <h2 class="new-arrivals-banner__title">NEW ARRIVALS</h2>
+        <div class="new-arrivals-banner__actions" aria-label="New arrivals quick links">
+          <a class="btn btn-primary btn-sm new-arrivals-banner__btn" href="/collections/men/">SHOPNEWMENS</a>
+          <a class="btn btn-primary btn-sm new-arrivals-banner__btn" href="/collections/women/">SHOPNEWWOMENS</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-grid product-grid--tight" aria-label="New Arrivals products">
+      {% for p in products.newArrivals.products %}
+        {{ productCard(p, { variant: "giveaway" }) }}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section id="deals" class="section section-home section-alt section-home--tight">
+  <div class="container">
+    <div class="deals-head">
+      <div>
+        <h2 class="deals-title">HOLIDAY DEALS</h2>
+        <p class="deals-subtitle">Shopping and gifting made easy with holiday deals.</p>
+      </div>
+      <a class="btn btn-outline btn-sm" href="/collections/sale/">VIEW ALL <span aria-hidden="true">→</span></a>
+    </div>
+
+    {{ promoTiles(products.holidayDeals.tiles) }}
+  </div>
+</section>
+
+<section id="headwear" class="section section-home">
+  <div class="container">
+    <h2 class="section-title section-title--solo">HEADWEAR</h2>
+
+    <div class="product-grid product-grid--tight" aria-label="Headwear products">
+      {% for p in products.headwear.products %}
+        {{ productCard(p, { variant: "giveaway" }) }}
+      {% endfor %}
+    </div>
+
+    <div class="center-cta">
+      <a class="btn btn-outline btn-sm" href="/collections/headwear/">VIEW ALL <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+
+<section id="grip" class="section section-home section-home--tight">
+  <div class="container">
+    <div class="grip-split">
+      <div class="grip-copy">
+        <h2 class="grip-title">GRIP IT &amp; RIP IT</h2>
+        <p class="grip-kicker">Simple mindset. No hesitation.</p>
+        <p class="grip-text">The Grip It &amp; Rip It Tee captures the fearless confidence every hitter needs stepping into the box.</p>
+
+        <ul class="grip-bullets" role="list">
+          <li>Lightweight and comfortable</li>
+          <li>Durable for active play</li>
+          <li>Bold design inspired by the game</li>
+        </ul>
+
+        <p class="grip-text">Step up. Swing free.</p>
+
+        <a class="btn btn-outline btn-sm grip-btn" href="/about/">READ OUR STORY</a>
+      </div>
+
+      <div class="grip-media" aria-hidden="true">
+        <img class="grip-media__img" src="/assets/img/placeholder.jpg" alt="" loading="lazy" decoding="async" />
+      </div>
+    </div>
+
+    <div class="grip-tiles" aria-label="Grip section tiles">
+      <div class="grip-tile"><img src="/assets/img/placeholder.jpg" alt="" loading="lazy" decoding="async" /></div>
+      <div class="grip-tile"><img src="/assets/img/placeholder.jpg" alt="" loading="lazy" decoding="async" /></div>
+      <div class="grip-tile"><img src="/assets/img/placeholder.jpg" alt="" loading="lazy" decoding="async" /></div>
+    </div>
+  </div>
+</section>
+
+<section id="featured" class="section section-home section-alt">
+  <div class="container">
+    {{ sectionHeader({
+      eyebrow: "FEATURED PROMOS",
+      title: "FEATURED PROMOS",
+      subtitle: "",
+      ctaText: "",
+      ctaUrl: ""
+    }) }}
+
+    {{ featuredPromos(products.featuredPromos.tiles) }}
+  </div>
+</section>

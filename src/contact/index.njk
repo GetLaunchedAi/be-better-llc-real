@@ -1,0 +1,41 @@
+---
+title: "Contact"
+subtitle: "Questions, sizing help, or order support—reach out."
+layout: layouts/page.njk
+breadcrumbs:
+  - label: "Home"
+    href: "/"
+  - label: "Contact"
+---
+
+<div class="card" style="padding:16px;">
+  <h2 class="card-title">Support</h2>
+  <p>
+    Email: <a href="mailto:support@example.com">support@example.com</a><br />
+    Hours: Mon–Fri, 7am–3pm MST
+  </p>
+  <p class="muted">Replace the email + hours with your real support info.</p>
+</div>
+
+<h2>Send a message</h2>
+<p class="muted">This form opens your email client with a prefilled message (Cloudways-friendly with no backend dependencies).</p>
+
+<form class="form" method="post" aria-label="Contact form" data-contact-form data-mailto="support@example.com">
+  <div class="form-row">
+    <label class="label" for="name">Name</label>
+    <input class="input" id="name" name="name" type="text" autocomplete="name" />
+  </div>
+
+  <div class="form-row">
+    <label class="label" for="email">Email</label>
+    <input class="input" id="email" name="email" type="email" autocomplete="email" />
+  </div>
+
+  <div class="form-row">
+    <label class="label" for="message">Message</label>
+    <textarea class="input" id="message" name="message" rows="5"></textarea>
+  </div>
+
+  <button class="btn btn-primary" type="submit">Send message</button>
+  <p class="muted" style="display:none; margin-top:10px;" data-contact-feedback></p>
+</form>

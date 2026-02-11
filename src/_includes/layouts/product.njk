@@ -1,0 +1,205 @@
+---
+layout: layouts/base.njk
+---
+
+{% from "components/product-card.njk" import productCard %}
+
+{# -----------------------------------------
+   Helpers: primary collection + labels
+------------------------------------------ #}
+{% set collectionLabels = {
+  "men": "Men",
+  "women": "Women",
+  "youth": "Youth",
+  "headwear": "Headwear",
+  "sale": "Sale"
+} %}
+
+{% set primaryCollection = "" %}
+{% if product and product.collections %}
+  {% for c in product.collections %}
+    {% if c != "sale" and not primaryCollection %}
+      {% set primaryCollection = c %}
+    {% endif %}
+  {% endfor %}
+  {% if not primaryCollection %}
+    {% set primaryCollection = product.collections[0] %}
+  {% endif %}
+{% endif %}
+
+{% set collectionLabel = collectionLabels[primaryCollection] or (primaryCollection | capitalize) %}
+{% set collectionHref = "/collections/sale/" %}
+{% if primaryCollection %}
+  {% set collectionHref = "/collections/" ~ primaryCollection ~ "/" %}
+{% endif %}
+
+{# Related products: same primary collection, excluding current #}
+{% set allProducts = products.catalog or [] %}
+{% set relatedBase = allProducts | filterByCollection(primaryCollection) %}
+{% set relatedShown = 0 %}
+
+<section class="section pdp" data-product-page>
+  <div class="container">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a class="breadcrumbs__link" href="/">Home</a>
+      <span class="breadcrumbs__sep" aria-hidden="true">/</span>
+      <a class="breadcrumbs__link" href="{{ collectionHref }}">{{ collectionLabel }}</a>
+      <span class="breadcrumbs__sep" aria-hidden="true">/</span>
+      <span class="breadcrumbs__current" aria-current="page">{{ product.title }}</span>
+    </nav>
+
+    <div class="pdp__grid">
+      {# Gallery #}
+      <div class="pdp-gallery" data-gallery>
+        <div class="pdp-gallery__main">
+          {% if product.images and product.images.length %}
+            {% set firstImg = product.images[0].src or product.images[0] %}
+            <img class="pdp-gallery__img" src="{{ firstImg }}" alt="{{ product.title }}" loading="eager" data-gallery-img />
+          {% elseif product.image %}
+            <img class="pdp-gallery__img" src="{{ product.image }}" alt="{{ product.title }}" loading="eager" data-gallery-img />
+          {% else %}
+            <div class="pdp-gallery__placeholder" data-gallery-placeholder>
+              <div class="pdp-gallery__ph-inner">
+                <span class="pdp-gallery__ph-badge">Image</span>
+                <span class="pdp-gallery__ph-label" data-placeholder-label>1</span>
+              </div>
+            </div>
+          {% endif %}
+        </div>
+
+        <div class="pdp-gallery__thumbs" aria-label="Gallery thumbnails">
+          {% if product.images and product.images.length %}
+            {% for img in product.images %}
+              {% set src = img.src or img %}
+              <button class="thumb {% if loop.first %}is-active{% endif %}" type="button" data-gallery-thumb data-src="{{ src }}" aria-label="View image {{ loop.index }}">
+                <img src="{{ img.thumb or src }}" alt="{{ product.title }} thumbnail {{ loop.index }}" loading="lazy" />
+              </button>
+            {% endfor %}
+          {% else %}
+            {% for i in [1,2,3] %}
+              <button class="thumb thumb--placeholder {% if i == 1 %}is-active{% endif %}" type="button" data-gallery-thumb data-placeholder="{{ i }}" aria-label="View placeholder image {{ i }}">
+                <span class="thumb__ph">{{ i }}</span>
+              </button>
+            {% endfor %}
+          {% endif %}
+        </div>
+      </div>
+
+      {# Info #}
+      <div class="pdp-info">
+        <p class="eyebrow">{{ collectionLabel }}</p>
+        <h1 class="pdp-title">{{ product.title }}</h1>
+        {% if product.subtitle %}
+          <p class="muted pdp-subtitle">{{ product.subtitle }}</p>
+        {% endif %}
+
+        <div class="pdp-meta">
+          <div class="pdp-price" aria-label="Price">
+            <span class="price-current">${{ product.price }}</span>
+            {% if product.compareAt %}
+              <span class="price-compare">${{ product.compareAt }}</span>
+            {% endif %}
+          </div>
+
+          {% if product.rating %}
+            <div class="rating" aria-label="Rating">
+              <span class="rating__stars" aria-hidden="true">★★★★★</span>
+              <span class="rating__value">{{ product.rating }}</span>
+              {% if product.reviewCount %}
+                <span class="muted rating__count">({{ product.reviewCount }})</span>
+              {% endif %}
+            </div>
+          {% endif %}
+        </div>
+
+        <div class="pdp-selectors">
+          {% set sizes = product.sizes or ["S","M","L","XL"] %}
+          <div class="selector">
+            <p class="selector__label">Size</p>
+            <div class="selector__row" role="list" data-variant-group data-variant-name="size">
+              {% for s in sizes %}
+                <button class="option-btn" type="button" data-variant-option data-variant-value="{{ s }}" aria-pressed="{{ 'true' if loop.first else 'false' }}">{{ s }}</button>
+              {% endfor %}
+            </div>
+          </div>
+
+          {% set colors = product.colors or ["Black","Navy","Stone"] %}
+          <div class="selector">
+            <p class="selector__label">Color</p>
+            <div class="selector__row" role="list" data-variant-group data-variant-name="color">
+              {% for c in colors %}
+                <button class="option-btn option-btn--chip" type="button" data-variant-option data-variant-value="{{ c }}" aria-pressed="{{ 'true' if loop.first else 'false' }}">{{ c }}</button>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+        <div class="pdp-actions">
+      <button
+        class="btn btn-primary btn-lg"
+        type="button"
+        data-cart-add
+        data-id="{{ product.id }}"
+        data-slug="{{ product.slug }}"
+        data-title="{{ product.title }}"
+        data-price="{{ product.price }}"
+        data-size="{{ sizes[0] }}"
+        data-color="{{ colors[0] }}"
+        data-image="{{ product.image or (product.images and (product.images[0].src or product.images[0])) or '/assets/img/placeholder.jpg' }}"
+      >
+        Add to cart
+      </button>
+      <p class="muted pdp-note">Saved in your cart (local). Checkout is a placeholder for now.</p>
+    </div>
+
+        <div class="accordion">
+          <details class="accordion__item" open>
+            <summary class="accordion__summary">Shipping</summary>
+            <div class="accordion__content">
+              <p class="muted">
+                Free shipping over $75. Standard delivery 3–5 business days. Expedited options at checkout (wire later).
+              </p>
+            </div>
+          </details>
+
+          <details class="accordion__item">
+            <summary class="accordion__summary">Returns</summary>
+            <div class="accordion__content">
+              <p class="muted">
+                Easy returns within 30 days. Items must be unworn with tags attached. Start a return online (wire later).
+              </p>
+            </div>
+          </details>
+
+          <details class="accordion__item">
+            <summary class="accordion__summary">Details</summary>
+            <div class="accordion__content">
+              <p class="muted">{{ product.details or "No details available yet." }}</p>
+              {% if product.tags and product.tags.length %}
+                <p class="muted"><strong>Tags:</strong> {{ product.tags | join(", ") }}</p>
+              {% endif %}
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <section class="related">
+      <div class="related__head">
+        <h2 class="related__title">Related products</h2>
+        <a class="muted related__link" href="{{ collectionHref }}">Shop {{ collectionLabel }}</a>
+      </div>
+
+      <div class="product-grid product-grid--compact">
+        {% for rp in relatedBase %}
+          {% if rp.id != product.id and relatedShown < 4 %}
+            {{ productCard(rp) }}
+            {% set relatedShown = relatedShown + 1 %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    </section>
+  </div>
+</section>
