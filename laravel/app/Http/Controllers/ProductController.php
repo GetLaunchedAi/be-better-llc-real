@@ -67,4 +67,33 @@ class ProductController extends Controller
 
         return view('products.show', $data);
     }
+
+    /**
+     * JSON Feed — /products.json
+     * Returns all active products in the format expected by the frontend.
+     */
+    public function json()
+    {
+        $products = \App\Models\Product::active()
+            ->with(['collections', 'tags'])
+            ->get()
+            ->map(function ($p) {
+                return [
+                    'id'          => (string) $p->id,
+                    'slug'        => $p->slug,
+                    'url'         => '/products/' . $p->slug . '/',
+                    'title'       => $p->title,
+                    'subtitle'    => $p->subtitle,
+                    'price'       => (string) $p->price,
+                    'compareAt'   => $p->compare_at ? (string) $p->compare_at : null,
+                    'badge'       => $p->badge,
+                    'badges'      => $p->badge ? [$p->badge] : [],
+                    'collections' => $p->collections->pluck('title')->toArray(),
+                    'tags'        => $p->tags->pluck('name')->toArray(),
+                    'image'       => $p->image ?: '/assets/img/placeholder.jpg',
+                ];
+            });
+
+        return response()->json($products);
+    }
 }

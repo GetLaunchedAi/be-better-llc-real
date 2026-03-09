@@ -24,6 +24,9 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
+// JSON Feed — /products.json
+Route::get('/products.json', [ProductController::class, 'json'])->name('products.json');
+
 // PDP — Product Detail Page
 Route::get('/products/{slug}', [ProductController::class, 'show'])
     ->where('slug', '[a-z0-9\-]+')
