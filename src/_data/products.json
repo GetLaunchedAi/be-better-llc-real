@@ -24,84 +24,142 @@
     "ctaUrl": "/collections/youth/",
     "products": [
       {
-        "title": "BETTER EVERY SWING - BLACK",
-        "subtitle": "2 Colors",
-        "price": "45.00",
-        "compareAt": "60.00",
-        "discount": "-25%",
-        "badges": [
-          "SALE"
+        "title": "Junior Swing Tee",
+        "subtitle": "Soft cotton blend",
+        "price": "24",
+        "compareAt": "30",
+        "badge": "Best Seller",
+        "url": "/products/junior-tee/",
+        "collections": [
+          "youth",
+          "sale"
         ],
-        "rating": 4.9,
-        "reviewCount": "",
-        "giveawayEntries": "45",
-        "url": "/products/better-every-swing-black/",
-        "slug": "better-every-swing-black",
+        "tags": [
+          "tops"
+        ],
+        "slug": "junior-tee",
+        "sizes": [
+          "YS",
+          "YM",
+          "YL"
+        ],
+        "colors": [
+          "Black",
+          "Navy",
+          "Stone",
+          "White"
+        ],
+        "details": "Soft cotton blend. Designed with comfort and durability in mind. Key tags: tops.",
+        "rating": 4.6,
+        "reviewCount": 25,
+        "images": [
+          {
+            "src": "/assets/img/placeholder.jpg",
+            "thumb": "/assets/img/placeholder.jpg"
+          }
+        ],
         "image": "/assets/img/placeholder.jpg"
       },
       {
-        "title": "GRIP IT & RIP IT - SADDLE",
-        "subtitle": "4 Colors",
-        "price": "45.00",
-        "compareAt": "60.00",
-        "discount": "-25%",
-        "badges": [
-          "SALE"
+        "title": "Youth Fairway Hoodie",
+        "subtitle": "Lightweight fleece",
+        "price": "49",
+        "compareAt": "60",
+        "badge": "New",
+        "url": "/products/y-hoodie/",
+        "collections": [
+          "youth",
+          "sale"
         ],
-        "rating": 4.9,
-        "reviewCount": "",
-        "giveawayEntries": "45",
-        "url": "/products/grip-it-rip-it-saddle/",
-        "slug": "grip-it-rip-it-saddle",
+        "tags": [
+          "layers"
+        ],
+        "slug": "y-hoodie",
+        "sizes": [
+          "YS",
+          "YM",
+          "YL"
+        ],
+        "colors": [
+          "Black",
+          "Navy",
+          "Stone",
+          "White"
+        ],
+        "details": "Lightweight fleece. Designed with comfort and durability in mind. Key tags: layers.",
+        "images": [
+          {
+            "src": "/assets/img/placeholder.jpg",
+            "thumb": "/assets/img/placeholder.jpg"
+          }
+        ],
         "image": "/assets/img/placeholder.jpg"
       },
       {
-        "title": "BE BETTER - BLACK",
-        "subtitle": "3 Colors",
-        "price": "45.00",
-        "compareAt": "60.00",
-        "discount": "-25%",
-        "badges": [
-          "NEW",
-          "SALE"
+        "title": "Kids Range Joggers",
+        "subtitle": "4-way stretch",
+        "price": "44",
+        "compareAt": "55",
+        "badge": "Limited",
+        "url": "/products/kids-joggers/",
+        "collections": [
+          "youth",
+          "sale"
         ],
-        "rating": 5,
-        "reviewCount": "",
-        "giveawayEntries": "45",
-        "url": "/products/be-better-black/",
-        "slug": "be-better-black",
+        "tags": [
+          "bottoms"
+        ],
+        "slug": "kids-joggers",
+        "sizes": [
+          "YS",
+          "YM",
+          "YL"
+        ],
+        "colors": [
+          "Black",
+          "Navy",
+          "Stone",
+          "White"
+        ],
+        "details": "4-way stretch. Designed with comfort and durability in mind. Key tags: bottoms.",
+        "images": [
+          {
+            "src": "/assets/img/placeholder.jpg",
+            "thumb": "/assets/img/placeholder.jpg"
+          }
+        ],
         "image": "/assets/img/placeholder.jpg"
       },
       {
-        "title": "EMBOSSED PULLOVER - GREY",
-        "subtitle": "2 Colors",
-        "price": "66.00",
-        "compareAt": "88.00",
-        "discount": "-25%",
-        "badges": [
-          "SALE"
+        "title": "Youth Snapback",
+        "subtitle": "Adjustable fit",
+        "price": "28",
+        "compareAt": "",
+        "badge": "",
+        "url": "/products/y-snapback/",
+        "collections": [
+          "youth",
+          "headwear"
         ],
-        "rating": 4.9,
-        "reviewCount": "",
-        "giveawayEntries": "66",
-        "url": "/products/embossed-pullover-grey/",
-        "slug": "embossed-pullover-grey",
-        "image": "/assets/img/placeholder.jpg"
-      },
-      {
-        "title": "OFFSEASON WORK",
-        "subtitle": "2 Colors",
-        "price": "54.00",
-        "compareAt": "72.00",
-        "discount": "-25%",
-        "badges": [
-          "SALE"
+        "tags": [
+          "hats"
         ],
-        "rating": 5,
-        "reviewCount": "",
-        "giveawayEntries": "54",
-        "url": "/products/offseason-work/",
-        "slug": "offseason-work",
+        "slug": "y-snapback",
+        "sizes": [
+          "OS"
+        ],
+        "colors": [
+          "Black",
+          "Navy",
+          "Red"
+        ],
+        "details": "Adjustable fit. Designed with comfort and durability in mind. Key tags: hats.",
+        "images": [
+          {
+            "src": "/assets/img/placeholder.jpg",
+            "thumb": "/assets/img/placeholder.jpg"
+          }
+        ],
         "image": "/assets/img/placeholder.jpg"
       }
     ]
@@ -190,14 +248,14 @@
         "headline": "BUY 3 AT THE PRICE OF 2",
         "ctaText": "SHOPNOW",
         "url": "/collections/sale/",
-        "image": "/assets/img/placeholder.jpg"
+        "image": "/assets/img/OG Better Hoodie Blk and white 2.png"
       },
       {
         "kicker": "Endless styles and colors.",
         "headline": "UP TO 40% OFF",
         "ctaText": "SHOPNOW",
         "url": "/collections/sale/",
-        "image": "/assets/img/placeholder.jpg"
+        "image": "/assets/img/OG Tan Be Better Crew.png"
       }
     ]
   },
@@ -205,86 +263,60 @@
     "title": "HEADWEAR",
     "products": [
       {
-        "title": "MONOGRAM FOAM TRUCKER - NAVY",
-        "subtitle": "3 Colors",
-        "price": "20.00",
-        "compareAt": "36.00",
-        "discount": "-44%",
-        "badges": [
-          "NEW",
-          "SALE"
-        ],
+        "title": "Reverse Black Hat",
+        "subtitle": "Snapback",
+        "price": "30.00",
+        "compareAt": "",
+        "discount": "",
+        "badges": ["NEW"],
         "rating": 5,
-        "reviewCount": "",
-        "giveawayEntries": "20",
-        "url": "/products/monogram-foam-trucker-navy/",
-        "slug": "monogram-foam-trucker-navy",
-        "image": "/assets/img/placeholder.jpg"
+        "reviewCount": 15,
+        "giveawayEntries": "30",
+        "url": "/products/reverse-black-hat/",
+        "slug": "reverse-black-hat",
+        "image": "/assets/img/reverse black hat website #2.png"
       },
       {
-        "title": "MONOGRAM FOAM TRUCKER - BROWN",
-        "subtitle": "3 Colors",
-        "price": "20.00",
-        "compareAt": "36.00",
-        "discount": "-44%",
-        "badges": [
-          "NEW",
-          "SALE"
-        ],
-        "rating": 4.6,
-        "reviewCount": "",
-        "giveawayEntries": "20",
-        "url": "/products/monogram-foam-trucker-brown/",
-        "slug": "monogram-foam-trucker-brown",
-        "image": "/assets/img/placeholder.jpg"
+        "title": "Reverse White Hat",
+        "subtitle": "Snapback",
+        "price": "30.00",
+        "compareAt": "",
+        "discount": "",
+        "badges": ["NEW"],
+        "rating": 5,
+        "reviewCount": 12,
+        "giveawayEntries": "30",
+        "url": "/products/reverse-white-hat/",
+        "slug": "reverse-white-hat",
+        "image": "/assets/img/Reverse white hat photo 2 website.png"
       },
       {
-        "title": "MONOGRAM FOAM TRUCKER - BLACK",
-        "subtitle": "",
-        "price": "20.00",
-        "compareAt": "36.00",
-        "discount": "-44%",
-        "badges": [
-          "SALE"
-        ],
-        "rating": "",
-        "reviewCount": "",
-        "giveawayEntries": "20",
-        "url": "/products/monogram-foam-trucker-black/",
-        "slug": "monogram-foam-trucker-black",
-        "image": "/assets/img/placeholder.jpg"
+        "title": "Black Reverse Hat",
+        "subtitle": "Adjustable Snapback",
+        "price": "30.00",
+        "compareAt": "",
+        "discount": "",
+        "badges": ["NEW"],
+        "rating": 5,
+        "reviewCount": 8,
+        "giveawayEntries": "30",
+        "url": "/products/blk-reverse-hat/",
+        "slug": "blk-reverse-hat",
+        "image": "/assets/img/Blk reverse hat website.png"
       },
       {
-        "title": "NO HAND OUTS FOAM TRUCKER - TAN",
-        "subtitle": "",
-        "price": "20.00",
-        "compareAt": "36.00",
-        "discount": "-44%",
-        "badges": [
-          "SALE"
-        ],
-        "rating": "",
-        "reviewCount": "",
-        "giveawayEntries": "20",
-        "url": "/products/no-hand-outs-foam-trucker-tan/",
-        "slug": "no-hand-outs-foam-trucker-tan",
-        "image": "/assets/img/placeholder.jpg"
-      },
-      {
-        "title": "FREEDOM OR DEATH FOAM TRUCKER - BLACK",
-        "subtitle": "",
-        "price": "20.00",
-        "compareAt": "36.00",
-        "discount": "-44%",
-        "badges": [
-          "SALE"
-        ],
-        "rating": "",
-        "reviewCount": "",
-        "giveawayEntries": "20",
-        "url": "/products/freedom-or-death-foam-trucker-black/",
-        "slug": "freedom-or-death-foam-trucker-black",
-        "image": "/assets/img/placeholder.jpg"
+        "title": "White Reverse Hat",
+        "subtitle": "Snapback",
+        "price": "30.00",
+        "compareAt": "",
+        "discount": "",
+        "badges": ["NEW"],
+        "rating": 5,
+        "reviewCount": 10,
+        "giveawayEntries": "30",
+        "url": "/products/white-reverse-hat/",
+        "slug": "white-reverse-hat",
+        "image": "/assets/img/white reverse hat website 2.png"
       }
     ]
   },
@@ -293,44 +325,60 @@
     "subtitle": "Dial in your feel with gloves and grab-and-go course essentials.",
     "products": [
       {
-        "title": "TourGrip Glove",
-        "subtitle": "Premium cabretta feel",
-        "price": "22",
+        "title": "Unleash Your Potential Tee",
+        "subtitle": "Graphic Tee",
+        "price": "30.00",
         "compareAt": "",
-        "badge": "Top Rated",
-        "url": "/products/tour-glove/",
-        "slug": "tour-glove",
-        "image": "/assets/img/placeholder.jpg"
+        "discount": "",
+        "badges": [],
+        "rating": 5,
+        "reviewCount": 22,
+        "giveawayEntries": "30",
+        "url": "/products/unleash-potential-tee/",
+        "slug": "unleash-potential-tee",
+        "image": "/assets/img/Unleash your Potential Tee ( Jake).png"
       },
       {
-        "title": "RainReady Pair",
-        "subtitle": "All-weather grip",
-        "price": "28",
+        "title": "Tee (Jake)",
+        "subtitle": "Premium Cotton",
+        "price": "30.00",
         "compareAt": "",
-        "badge": "2-Pack",
-        "url": "/products/rain-glove/",
-        "slug": "rain-glove",
-        "image": "/assets/img/placeholder.jpg"
+        "discount": "",
+        "badges": [],
+        "rating": 5,
+        "reviewCount": 18,
+        "giveawayEntries": "30",
+        "url": "/products/tee-jake/",
+        "slug": "tee-jake",
+        "image": "/assets/img/1_ Tee (Jake).png"
       },
       {
-        "title": "Rip-It Towel",
-        "subtitle": "Waffle weave",
-        "price": "16",
+        "title": "Better Tee",
+        "subtitle": "Performance Blend",
+        "price": "30.00",
         "compareAt": "",
-        "badge": "",
-        "url": "/products/rip-it-towel/",
-        "slug": "rip-it-towel",
-        "image": "/assets/img/placeholder.jpg"
+        "discount": "",
+        "badges": [],
+        "rating": 4.8,
+        "reviewCount": 14,
+        "giveawayEntries": "30",
+        "url": "/products/better-tee/",
+        "slug": "better-tee",
+        "image": "/assets/img/Better Tee (Goob).png"
       },
       {
-        "title": "Grip Wax",
-        "subtitle": "Extra tacky",
-        "price": "12",
+        "title": "White Better Tee",
+        "subtitle": "Classic Fit",
+        "price": "30.00",
         "compareAt": "",
-        "badge": "",
-        "url": "/products/grip-wax/",
-        "slug": "grip-wax",
-        "image": "/assets/img/placeholder.jpg"
+        "discount": "",
+        "badges": [],
+        "rating": 4.9,
+        "reviewCount": 16,
+        "giveawayEntries": "30",
+        "url": "/products/white-better-tee/",
+        "slug": "white-better-tee",
+        "image": "/assets/img/white Better Tee ( jacque)-2.png"
       }
     ]
   },
@@ -340,1113 +388,21 @@
       {
         "caption": "SHOP ALL MEN'S",
         "url": "/collections/men/",
-        "image": "/assets/img/placeholder.jpg"
+        "image": "/assets/img/OG BLK Be Better Crew.png"
       },
       {
         "caption": "SHOP ALL WOMEN'S",
         "url": "/collections/women/",
-        "image": "/assets/img/placeholder.jpg"
+        "image": "/assets/img/OG Better Hoodie (Katy).png"
       },
       {
         "caption": "SHOP ALL YOUTH",
         "url": "/collections/youth/",
-        "image": "/assets/img/placeholder.jpg"
+        "image": "/assets/img/Women_s Relax crew Bone.png"
       }
     ]
   },
   "catalog": [
-    {
-      "id": "pf-polo",
-      "title": "ProFlex Polo",
-      "subtitle": "Breathable performance knit",
-      "price": "68",
-      "compareAt": "",
-      "badge": "Just In",
-      "url": "/products/pf-polo/",
-      "collections": [
-        "men"
-      ],
-      "tags": [
-        "new",
-        "tops",
-        "golf"
-      ],
-      "slug": "pf-polo",
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "colors": [
-        "Black",
-        "Navy",
-        "Stone"
-      ],
-      "details": "Breathable performance knit. Designed with comfort and durability in mind. Key tags: new, tops, golf.",
-      "rating": 4.8,
-      "reviewCount": 172,
-      "images": [
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        },
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        },
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        }
-      ],
-      "image": "/assets/img/placeholder.jpg"
-    },
-    {
-      "id": "storm-zip",
-      "title": "StormShell Quarter Zip",
-      "subtitle": "Wind + mist resistant",
-      "price": "84",
-      "compareAt": "99",
-      "badge": "New",
-      "url": "/products/storm-zip/",
-      "collections": [
-        "men",
-        "sale"
-      ],
-      "tags": [
-        "layers",
-        "outerwear"
-      ],
-      "slug": "storm-zip",
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "colors": [
-        "Black",
-        "Navy",
-        "Stone",
-        "White"
-      ],
-      "details": "Wind + mist resistant. Designed with comfort and durability in mind. Key tags: layers, outerwear.",
-      "rating": 4.6,
-      "reviewCount": 89,
-      "images": [
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        },
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        },
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        }
-      ],
-      "image": "/assets/img/placeholder.jpg"
-    },
-    {
-      "id": "fairway-chino",
-      "title": "Fairway Chinos",
-      "subtitle": "Stretch, tapered fit",
-      "price": "76",
-      "compareAt": "",
-      "badge": "",
-      "url": "/products/fairway-chino/",
-      "collections": [
-        "men"
-      ],
-      "tags": [
-        "bottoms"
-      ],
-      "slug": "fairway-chino",
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "colors": [
-        "Black",
-        "Navy",
-        "Stone"
-      ],
-      "details": "Stretch, tapered fit. Designed with comfort and durability in mind. Key tags: bottoms.",
-      "rating": 4.7,
-      "reviewCount": 64,
-      "images": [
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        },
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        },
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        }
-      ],
-      "image": "/assets/img/placeholder.jpg"
-    },
-    {
-      "id": "sunday-sweater",
-      "title": "Sunday Crew Sweater",
-      "subtitle": "Soft merino blend",
-      "price": "88",
-      "compareAt": "110",
-      "badge": "Sale",
-      "url": "/products/sunday-sweater/",
-      "collections": [
-        "men",
-        "sale"
-      ],
-      "tags": [
-        "layers"
-      ],
-      "slug": "sunday-sweater",
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "colors": [
-        "Black",
-        "Navy",
-        "Stone",
-        "White"
-      ],
-      "details": "Soft merino blend. Designed with comfort and durability in mind. Key tags: layers.",
-      "images": [
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        },
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        },
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        }
-      ],
-      "image": "/assets/img/placeholder.jpg"
-    },
-    {
-      "id": "w-skirt",
-      "title": "Aero Skort",
-      "subtitle": "Built-in shorts + pocket",
-      "price": "62",
-      "compareAt": "",
-      "badge": "New",
-      "url": "/products/w-skirt/",
-      "collections": [
-        "women"
-      ],
-      "tags": [
-        "new",
-        "bottoms"
-      ],
-      "slug": "w-skirt",
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "colors": [
-        "Black",
-        "Navy",
-        "Sage",
-        "Sand"
-      ],
-      "details": "Built-in shorts + pocket. Designed with comfort and durability in mind. Key tags: new, bottoms.",
-      "images": [
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        },
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        },
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        }
-      ],
-      "image": "/assets/img/placeholder.jpg"
-    },
-    {
-      "id": "w-vest",
-      "title": "BreezeLite Vest",
-      "subtitle": "Light, packable warmth",
-      "price": "78",
-      "compareAt": "",
-      "badge": "",
-      "url": "/products/w-vest/",
-      "collections": [
-        "women"
-      ],
-      "tags": [
-        "layers",
-        "outerwear"
-      ],
-      "slug": "w-vest",
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "colors": [
-        "Black",
-        "Navy",
-        "Sage",
-        "Sand"
-      ],
-      "details": "Light, packable warmth. Designed with comfort and durability in mind. Key tags: layers, outerwear.",
-      "images": [
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        },
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        },
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        }
-      ],
-      "image": "/assets/img/placeholder.jpg"
-    },
-    {
-      "id": "w-hoodie",
-      "title": "CloudLite Hoodie",
-      "subtitle": "Peached fleece interior",
-      "price": "64",
-      "compareAt": "80",
-      "badge": "Sale",
-      "url": "/products/w-hoodie/",
-      "collections": [
-        "women",
-        "sale"
-      ],
-      "tags": [
-        "tops",
-        "layers"
-      ],
-      "slug": "w-hoodie",
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "colors": [
-        "Black",
-        "Navy",
-        "Stone",
-        "White"
-      ],
-      "details": "Peached fleece interior. Designed with comfort and durability in mind. Key tags: tops, layers.",
-      "images": [
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        },
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        },
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        }
-      ],
-      "image": "/assets/img/placeholder.jpg"
-    },
-    {
-      "id": "w-tee",
-      "title": "Course Day Tee",
-      "subtitle": "Relaxed cotton feel",
-      "price": "34",
-      "compareAt": "",
-      "badge": "",
-      "url": "/products/w-tee/",
-      "collections": [
-        "women"
-      ],
-      "tags": [
-        "tops"
-      ],
-      "slug": "w-tee",
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "colors": [
-        "Black",
-        "Navy",
-        "Sage",
-        "Sand"
-      ],
-      "details": "Relaxed cotton feel. Designed with comfort and durability in mind. Key tags: tops.",
-      "images": [
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        },
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        },
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        }
-      ],
-      "image": "/assets/img/placeholder.jpg"
-    },
-    {
-      "id": "junior-tee",
-      "title": "Junior Swing Tee",
-      "subtitle": "Soft cotton blend",
-      "price": "24",
-      "compareAt": "30",
-      "badge": "Best Seller",
-      "url": "/products/junior-tee/",
-      "collections": [
-        "youth",
-        "sale"
-      ],
-      "tags": [
-        "tops"
-      ],
-      "slug": "junior-tee",
-      "sizes": [
-        "YS",
-        "YM",
-        "YL"
-      ],
-      "colors": [
-        "Black",
-        "Navy",
-        "Stone",
-        "White"
-      ],
-      "details": "Soft cotton blend. Designed with comfort and durability in mind. Key tags: tops.",
-      "rating": 4.6,
-      "reviewCount": 25,
-      "images": [
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        },
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        },
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        }
-      ],
-      "image": "/assets/img/placeholder.jpg"
-    },
-    {
-      "id": "y-hoodie",
-      "title": "Youth Fairway Hoodie",
-      "subtitle": "Lightweight fleece",
-      "price": "49",
-      "compareAt": "60",
-      "badge": "New",
-      "url": "/products/y-hoodie/",
-      "collections": [
-        "youth",
-        "sale"
-      ],
-      "tags": [
-        "layers"
-      ],
-      "slug": "y-hoodie",
-      "sizes": [
-        "YS",
-        "YM",
-        "YL"
-      ],
-      "colors": [
-        "Black",
-        "Navy",
-        "Stone",
-        "White"
-      ],
-      "details": "Lightweight fleece. Designed with comfort and durability in mind. Key tags: layers.",
-      "images": [
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        },
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        },
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        }
-      ],
-      "image": "/assets/img/placeholder.jpg"
-    },
-    {
-      "id": "kids-joggers",
-      "title": "Kids Range Joggers",
-      "subtitle": "4-way stretch",
-      "price": "44",
-      "compareAt": "55",
-      "badge": "Limited",
-      "url": "/products/kids-joggers/",
-      "collections": [
-        "youth",
-        "sale"
-      ],
-      "tags": [
-        "bottoms"
-      ],
-      "slug": "kids-joggers",
-      "sizes": [
-        "YS",
-        "YM",
-        "YL"
-      ],
-      "colors": [
-        "Black",
-        "Navy",
-        "Stone",
-        "White"
-      ],
-      "details": "4-way stretch. Designed with comfort and durability in mind. Key tags: bottoms.",
-      "images": [
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        },
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        },
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        }
-      ],
-      "image": "/assets/img/placeholder.jpg"
-    },
-    {
-      "id": "y-snapback",
-      "title": "Youth Snapback",
-      "subtitle": "Adjustable fit",
-      "price": "28",
-      "compareAt": "",
-      "badge": "",
-      "url": "/products/y-snapback/",
-      "collections": [
-        "youth",
-        "headwear"
-      ],
-      "tags": [
-        "hats"
-      ],
-      "slug": "y-snapback",
-      "sizes": [
-        "OS"
-      ],
-      "colors": [
-        "Black",
-        "Navy",
-        "Red"
-      ],
-      "details": "Adjustable fit. Designed with comfort and durability in mind. Key tags: hats.",
-      "images": [
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        },
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        },
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        }
-      ],
-      "image": "/assets/img/placeholder.jpg"
-    },
-    {
-      "id": "rope-cap",
-      "title": "Rope Cap",
-      "subtitle": "Vintage course look",
-      "price": "34",
-      "compareAt": "",
-      "badge": "New",
-      "url": "/products/rope-cap/",
-      "collections": [
-        "headwear"
-      ],
-      "tags": [
-        "hats",
-        "unisex",
-        "new"
-      ],
-      "slug": "rope-cap",
-      "sizes": [
-        "OS"
-      ],
-      "colors": [
-        "Black",
-        "Navy",
-        "Stone"
-      ],
-      "details": "Vintage course look. Designed with comfort and durability in mind. Key tags: hats, unisex, new.",
-      "rating": 4.9,
-      "reviewCount": 210,
-      "images": [
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        },
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        },
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        }
-      ],
-      "image": "/assets/img/placeholder.jpg"
-    },
-    {
-      "id": "dad-hat",
-      "title": "Classic Dad Hat",
-      "subtitle": "Washed cotton",
-      "price": "30",
-      "compareAt": "",
-      "badge": "",
-      "url": "/products/dad-hat/",
-      "collections": [
-        "headwear"
-      ],
-      "tags": [
-        "hats",
-        "unisex"
-      ],
-      "slug": "dad-hat",
-      "sizes": [
-        "OS"
-      ],
-      "colors": [
-        "Black",
-        "Navy",
-        "Stone"
-      ],
-      "details": "Washed cotton. Designed with comfort and durability in mind. Key tags: hats, unisex.",
-      "images": [
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        },
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        },
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        }
-      ],
-      "image": "/assets/img/placeholder.jpg"
-    },
-    {
-      "id": "beanie",
-      "title": "Knit Beanie",
-      "subtitle": "Warmth without bulk",
-      "price": "28",
-      "compareAt": "36",
-      "badge": "Sale",
-      "url": "/products/beanie/",
-      "collections": [
-        "headwear",
-        "sale"
-      ],
-      "tags": [
-        "beanies",
-        "unisex"
-      ],
-      "slug": "beanie",
-      "sizes": [
-        "OS"
-      ],
-      "colors": [
-        "Black",
-        "Navy",
-        "Stone",
-        "White"
-      ],
-      "details": "Warmth without bulk. Designed with comfort and durability in mind. Key tags: beanies, unisex.",
-      "rating": 4.4,
-      "reviewCount": 33,
-      "images": [
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        },
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        },
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        }
-      ],
-      "image": "/assets/img/placeholder.jpg"
-    },
-    {
-      "id": "visor",
-      "title": "Performance Visor",
-      "subtitle": "Moisture-wicking band",
-      "price": "26",
-      "compareAt": "",
-      "badge": "",
-      "url": "/products/visor/",
-      "collections": [
-        "headwear"
-      ],
-      "tags": [
-        "hats",
-        "unisex"
-      ],
-      "slug": "visor",
-      "sizes": [
-        "OS"
-      ],
-      "colors": [
-        "Black",
-        "Navy",
-        "Stone"
-      ],
-      "details": "Moisture-wicking band. Designed with comfort and durability in mind. Key tags: hats, unisex.",
-      "images": [
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        },
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        },
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        }
-      ],
-      "image": "/assets/img/placeholder.jpg"
-    },
-    {
-      "id": "tour-glove",
-      "title": "TourGrip Glove",
-      "subtitle": "Premium cabretta feel",
-      "price": "22",
-      "compareAt": "",
-      "badge": "Top Rated",
-      "url": "/products/tour-glove/",
-      "collections": [
-        "men",
-        "sale"
-      ],
-      "tags": [
-        "accessories",
-        "gloves"
-      ],
-      "slug": "tour-glove",
-      "sizes": [
-        "OS"
-      ],
-      "colors": [
-        "Black",
-        "Navy",
-        "Stone",
-        "White"
-      ],
-      "details": "Premium cabretta feel. Designed with comfort and durability in mind. Key tags: accessories, gloves.",
-      "rating": 4.7,
-      "reviewCount": 118,
-      "images": [
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        },
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        },
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        }
-      ],
-      "image": "/assets/img/placeholder.jpg"
-    },
-    {
-      "id": "rain-glove",
-      "title": "RainReady Pair",
-      "subtitle": "All-weather grip",
-      "price": "28",
-      "compareAt": "",
-      "badge": "2-Pack",
-      "url": "/products/rain-glove/",
-      "collections": [
-        "sale"
-      ],
-      "tags": [
-        "accessories",
-        "gloves"
-      ],
-      "slug": "rain-glove",
-      "sizes": [
-        "OS"
-      ],
-      "colors": [
-        "Black",
-        "Navy",
-        "Stone",
-        "White"
-      ],
-      "details": "All-weather grip. Designed with comfort and durability in mind. Key tags: accessories, gloves.",
-      "images": [
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        },
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        },
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        }
-      ],
-      "image": "/assets/img/placeholder.jpg"
-    },
-    {
-      "id": "range-towel",
-      "title": "MicroFiber Range Towel",
-      "subtitle": "Clip-on, quick dry",
-      "price": "18",
-      "compareAt": "",
-      "badge": "",
-      "url": "/products/range-towel/",
-      "collections": [
-        "sale"
-      ],
-      "tags": [
-        "accessories"
-      ],
-      "slug": "range-towel",
-      "sizes": [
-        "OS"
-      ],
-      "colors": [
-        "Black",
-        "Navy",
-        "Stone",
-        "White"
-      ],
-      "details": "Clip-on, quick dry. Designed with comfort and durability in mind. Key tags: accessories.",
-      "images": [
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        },
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        },
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        }
-      ],
-      "image": "/assets/img/placeholder.jpg"
-    },
-    {
-      "id": "sticker-pack",
-      "title": "Course Sticker Pack",
-      "subtitle": "5 pack, matte finish",
-      "price": "10",
-      "compareAt": "14",
-      "badge": "Sale",
-      "url": "/products/sticker-pack/",
-      "collections": [
-        "sale"
-      ],
-      "tags": [
-        "accessories"
-      ],
-      "slug": "sticker-pack",
-      "sizes": [
-        "OS"
-      ],
-      "colors": [
-        "Black",
-        "Navy",
-        "Stone",
-        "White"
-      ],
-      "details": "5 pack, matte finish. Designed with comfort and durability in mind. Key tags: accessories.",
-      "images": [
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        },
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        },
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        }
-      ],
-      "image": "/assets/img/placeholder.jpg"
-    },
-    {
-      "id": "tour-fit-chino",
-      "title": "Tour Fit Chino",
-      "subtitle": "Tapered, stretch waist",
-      "price": "78",
-      "compareAt": "",
-      "badge": "",
-      "collections": [
-        "men"
-      ],
-      "tags": [
-        "bottoms",
-        "golf"
-      ],
-      "slug": "tour-fit-chino",
-      "url": "/products/tour-fit-chino/",
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "colors": [
-        "Black",
-        "Navy",
-        "Stone"
-      ],
-      "details": "Tapered, stretch waist. Designed with comfort and durability in mind.",
-      "images": [
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        },
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        },
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        }
-      ],
-      "image": "/assets/img/placeholder.jpg"
-    },
-    {
-      "id": "performance-crew-socks",
-      "title": "Performance Crew Socks",
-      "subtitle": "Cushioned heel/toe",
-      "price": "18",
-      "compareAt": "",
-      "badge": "2-Pack",
-      "collections": [
-        "men",
-        "sale"
-      ],
-      "tags": [
-        "accessories",
-        "socks"
-      ],
-      "slug": "performance-crew-socks",
-      "url": "/products/performance-crew-socks/",
-      "sizes": [
-        "OS"
-      ],
-      "colors": [
-        "Black",
-        "Navy",
-        "Stone",
-        "White"
-      ],
-      "details": "Cushioned heel/toe. Designed with comfort and durability in mind.",
-      "images": [
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        },
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        },
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        }
-      ],
-      "image": "/assets/img/placeholder.jpg"
-    },
-    {
-      "id": "cold-weather-beanie",
-      "title": "Cold-Weather Beanie",
-      "subtitle": "Soft knit",
-      "price": "26",
-      "compareAt": "32",
-      "badge": "Deal",
-      "collections": [
-        "headwear",
-        "sale"
-      ],
-      "tags": [
-        "beanies",
-        "unisex"
-      ],
-      "slug": "cold-weather-beanie",
-      "url": "/products/cold-weather-beanie/",
-      "sizes": [
-        "OS"
-      ],
-      "colors": [
-        "Black",
-        "Navy",
-        "Stone",
-        "White"
-      ],
-      "details": "Soft knit. Designed with comfort and durability in mind.",
-      "images": [
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        },
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        },
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        }
-      ],
-      "image": "/assets/img/placeholder.jpg"
-    },
-    {
-      "id": "rip-it-towel",
-      "title": "Rip-It Towel",
-      "subtitle": "Waffle weave",
-      "price": "16",
-      "compareAt": "",
-      "badge": "",
-      "collections": [
-        "sale"
-      ],
-      "tags": [
-        "accessories"
-      ],
-      "slug": "rip-it-towel",
-      "url": "/products/rip-it-towel/",
-      "sizes": [
-        "OS"
-      ],
-      "colors": [
-        "Black",
-        "Navy",
-        "Stone",
-        "White"
-      ],
-      "details": "Waffle weave. Designed with comfort and durability in mind.",
-      "images": [
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        },
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        },
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        }
-      ],
-      "image": "/assets/img/placeholder.jpg"
-    },
-    {
-      "id": "grip-wax",
-      "title": "Grip Wax",
-      "subtitle": "Extra tacky",
-      "price": "12",
-      "compareAt": "",
-      "badge": "",
-      "collections": [
-        "sale"
-      ],
-      "tags": [
-        "accessories"
-      ],
-      "slug": "grip-wax",
-      "url": "/products/grip-wax/",
-      "sizes": [
-        "OS"
-      ],
-      "colors": [
-        "Black",
-        "Navy",
-        "Stone",
-        "White"
-      ],
-      "details": "Extra tacky. Designed with comfort and durability in mind.",
-      "images": [
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        },
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        },
-        {
-          "src": "/assets/img/placeholder.jpg",
-          "thumb": "/assets/img/placeholder.jpg"
-        }
-      ],
-      "image": "/assets/img/placeholder.jpg"
-    },
     {
       "id": "tee-jake",
       "title": "Tee (Jake)",

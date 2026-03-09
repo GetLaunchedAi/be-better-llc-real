@@ -47,13 +47,18 @@ class ImportProductsJson extends Command
 
         $this->info('Importing products...');
 
-        DB::transaction(function () use ($data) {
+        $importedSlugs = [];
+
+        DB::transaction(function () use ($data, &$importedSlugs) {
             foreach ($data['catalog'] as $item) {
-                $this->importProduct($item);
+                $importedSlugs[] = $this->importProduct($item);
             }
+
+            // Delete products not in the import list
+            Product::whereNotIn('slug', $importedSlugs)->delete();
         });
 
-        $this->info('Import complete!');
+        $this->info('Import complete! Removed obsolete products.');
         return 0;
     }
 
@@ -127,6 +132,8 @@ class ImportProductsJson extends Command
         }
 
         $this->line("Imported: {$product->title}");
+        
+        return $slug;
     }
 }
 
