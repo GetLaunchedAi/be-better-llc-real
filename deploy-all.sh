@@ -37,6 +37,10 @@ composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist
 # Run migrations
 php artisan migrate --force
 
+# Import products from JSON to Database
+echo "▸ Importing products from JSON..."
+php artisan app:import-products-json
+
 # Cache config/routes/views
 php artisan config:cache
 php artisan route:cache
