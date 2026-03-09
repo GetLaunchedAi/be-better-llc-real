@@ -1458,6 +1458,259 @@
         }
       ],
       "image": "/assets/img/placeholder.jpg"
+    },
+    {
+      "id": "tee-jake",
+      "title": "Tee (Jake)",
+      "subtitle": "Premium Cotton",
+      "price": "30",
+      "url": "/products/tee-jake/",
+      "slug": "tee-jake",
+      "image": "/assets/img/1_ Tee (Jake).png",
+      "collections": ["men", "new"],
+      "tags": ["tops"]
+    },
+    {
+      "id": "barbell-blk-hoodie",
+      "title": "Barbell Black Hoodie",
+      "subtitle": "Heavyweight Fleece",
+      "price": "60",
+      "url": "/products/barbell-blk-hoodie/",
+      "slug": "barbell-blk-hoodie",
+      "image": "/assets/img/Barbell Blk hoodie (Chris).png",
+      "collections": ["men", "hoodies"],
+      "tags": ["layers"]
+    },
+    {
+      "id": "better-tee",
+      "title": "Better Tee",
+      "subtitle": "Performance Blend",
+      "price": "30",
+      "url": "/products/better-tee/",
+      "slug": "better-tee",
+      "image": "/assets/img/Better Tee (Goob).png",
+      "collections": ["men"],
+      "tags": ["tops"]
+    },
+    {
+      "id": "black-relax-hoodie",
+      "title": "Black Relax Hoodie",
+      "subtitle": "Relaxed Fit",
+      "price": "60",
+      "url": "/products/black-relax-hoodie/",
+      "slug": "black-relax-hoodie",
+      "image": "/assets/img/Black Relax Hoodie.png",
+      "collections": ["men", "hoodies"],
+      "tags": ["layers"]
+    },
+    {
+      "id": "blk-barbell-hoodie",
+      "title": "Black Barbell Hoodie",
+      "subtitle": "Gym Essential",
+      "price": "60",
+      "url": "/products/blk-barbell-hoodie/",
+      "slug": "blk-barbell-hoodie",
+      "image": "/assets/img/Blk Barbell hoodie (front) .png",
+      "collections": ["men", "hoodies"],
+      "tags": ["layers"]
+    },
+    {
+      "id": "blk-better-tee",
+      "title": "Black Better Tee",
+      "subtitle": "Classic Fit",
+      "price": "30",
+      "url": "/products/blk-better-tee/",
+      "slug": "blk-better-tee",
+      "image": "/assets/img/Blk Better Tee ( Katherine)-2 3.png",
+      "collections": ["women"],
+      "tags": ["tops"]
+    },
+    {
+      "id": "blk-reverse-hat",
+      "title": "Black Reverse Hat",
+      "subtitle": "Adjustable Snapback",
+      "price": "30",
+      "url": "/products/blk-reverse-hat/",
+      "slug": "blk-reverse-hat",
+      "image": "/assets/img/Blk reverse hat website.png",
+      "collections": ["headwear"],
+      "tags": ["hats"]
+    },
+    {
+      "id": "carolina-relax-hoodie",
+      "title": "Carolina Relax Hoodie",
+      "subtitle": "Soft Fleece",
+      "price": "60",
+      "url": "/products/carolina-relax-hoodie/",
+      "slug": "carolina-relax-hoodie",
+      "image": "/assets/img/Carolina Relax Hoodie.png",
+      "collections": ["men", "hoodies"],
+      "tags": ["layers"]
+    },
+    {
+      "id": "og-better-hoodie",
+      "title": "OG Better Hoodie",
+      "subtitle": "Original Design",
+      "price": "60",
+      "url": "/products/og-better-hoodie/",
+      "slug": "og-better-hoodie",
+      "image": "/assets/img/OG Better Hoodie (Katy).png",
+      "collections": ["women", "hoodies"],
+      "tags": ["layers"]
+    },
+    {
+      "id": "og-better-tee-blk",
+      "title": "OG Better Tee Black",
+      "subtitle": "Cotton Blend",
+      "price": "30",
+      "url": "/products/og-better-tee-blk/",
+      "slug": "og-better-tee-blk",
+      "image": "/assets/img/OG Better Tee Blk .png",
+      "collections": ["men"],
+      "tags": ["tops"]
+    },
+    {
+      "id": "og-better-tee-white",
+      "title": "OG Better Tee White",
+      "subtitle": "Cotton Blend",
+      "price": "30",
+      "url": "/products/og-better-tee-white/",
+      "slug": "og-better-tee-white",
+      "image": "/assets/img/OG Better Tee white .png",
+      "collections": ["men"],
+      "tags": ["tops"]
+    },
+    {
+      "id": "og-blk-be-better-crew",
+      "title": "OG Black Be Better Crew",
+      "subtitle": "Crew Neck",
+      "price": "50",
+      "url": "/products/og-blk-be-better-crew/",
+      "slug": "og-blk-be-better-crew",
+      "image": "/assets/img/OG BLK Be Better Crew.png",
+      "collections": ["men", "crew"],
+      "tags": ["layers"]
+    },
+    {
+      "id": "og-tan-be-better-crew",
+      "title": "OG Tan Be Better Crew",
+      "subtitle": "Crew Neck",
+      "price": "50",
+      "url": "/products/og-tan-be-better-crew/",
+      "slug": "og-tan-be-better-crew",
+      "image": "/assets/img/OG Tan Be Better Crew.png",
+      "collections": ["men", "crew"],
+      "tags": ["layers"]
+    },
+    {
+      "id": "reverse-black-hat",
+      "title": "Reverse Black Hat",
+      "subtitle": "Snapback",
+      "price": "30",
+      "url": "/products/reverse-black-hat/",
+      "slug": "reverse-black-hat",
+      "image": "/assets/img/reverse black hat website #2.png",
+      "collections": ["headwear"],
+      "tags": ["hats"]
+    },
+    {
+      "id": "reverse-white-hat",
+      "title": "Reverse White Hat",
+      "subtitle": "Snapback",
+      "price": "30",
+      "url": "/products/reverse-white-hat/",
+      "slug": "reverse-white-hat",
+      "image": "/assets/img/Reverse white hat photo 2 website.png",
+      "collections": ["headwear"],
+      "tags": ["hats"]
+    },
+    {
+      "id": "sand-relax-hoodie",
+      "title": "Sand Relax Hoodie",
+      "subtitle": "Relaxed Fit",
+      "price": "60",
+      "url": "/products/sand-relax-hoodie/",
+      "slug": "sand-relax-hoodie",
+      "image": "/assets/img/Sand Relax Hoodie.png",
+      "collections": ["men", "hoodies"],
+      "tags": ["layers"]
+    },
+    {
+      "id": "seafoam-relax-hoodie",
+      "title": "Seafoam Relax Hoodie",
+      "subtitle": "Relaxed Fit",
+      "price": "60",
+      "url": "/products/seafoam-relax-hoodie/",
+      "slug": "seafoam-relax-hoodie",
+      "image": "/assets/img/Seafoam Relax Hoodie.png",
+      "collections": ["men", "hoodies"],
+      "tags": ["layers"]
+    },
+    {
+      "id": "unleash-potential-tee",
+      "title": "Unleash Your Potential Tee",
+      "subtitle": "Graphic Tee",
+      "price": "30",
+      "url": "/products/unleash-potential-tee/",
+      "slug": "unleash-potential-tee",
+      "image": "/assets/img/Unleash your Potential Tee ( Jake).png",
+      "collections": ["men"],
+      "tags": ["tops"]
+    },
+    {
+      "id": "white-better-tee",
+      "title": "White Better Tee",
+      "subtitle": "Classic Fit",
+      "price": "30",
+      "url": "/products/white-better-tee/",
+      "slug": "white-better-tee",
+      "image": "/assets/img/white Better Tee ( jacque)-2.png",
+      "collections": ["women"],
+      "tags": ["tops"]
+    },
+    {
+      "id": "white-reverse-hat",
+      "title": "White Reverse Hat",
+      "subtitle": "Snapback",
+      "price": "30",
+      "url": "/products/white-reverse-hat/",
+      "slug": "white-reverse-hat",
+      "image": "/assets/img/white reverse hat website 2.png",
+      "collections": ["headwear"],
+      "tags": ["hats"]
+    },
+    {
+      "id": "wht-barbell-hoodie",
+      "title": "White Barbell Hoodie",
+      "subtitle": "Gym Essential",
+      "price": "60",
+      "url": "/products/wht-barbell-hoodie/",
+      "slug": "wht-barbell-hoodie",
+      "image": "/assets/img/Wht Barbell hoodie (front) -2.png",
+      "collections": ["men", "hoodies"],
+      "tags": ["layers"]
+    },
+    {
+      "id": "womens-relax-crew-bone",
+      "title": "Women's Relax Crew Bone",
+      "subtitle": "Relaxed Fit",
+      "price": "50",
+      "url": "/products/womens-relax-crew-bone/",
+      "slug": "womens-relax-crew-bone",
+      "image": "/assets/img/Women_s Relax crew Bone.png",
+      "collections": ["women", "crew"],
+      "tags": ["layers"]
+    },
+    {
+      "id": "womens-relax-crew-blk",
+      "title": "Women's Relax Crew Black",
+      "subtitle": "Relaxed Fit",
+      "price": "50",
+      "url": "/products/womens-relax-crew-blk/",
+      "slug": "womens-relax-crew-blk",
+      "image": "/assets/img/Womens Relax Crew blk.png",
+      "collections": ["women", "crew"],
+      "tags": ["layers"]
     }
   ]
 }
