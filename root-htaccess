@@ -1,23 +1,95 @@
 <IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+
     RewriteEngine On
     RewriteBase /
 
-    # Force HTTPS
+    # ==========================================================================
+    # 1. Force HTTPS (Cloudways / Varnish compatible)
+    # ==========================================================================
     RewriteCond %{HTTP:X-Forwarded-Proto} !https
     RewriteCond %{HTTPS} off
     RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-    # 1. Serve static files (Eleventy) directly if they exist
+    # ==========================================================================
+    # 2. ALWAYS route these paths to Laravel (ignore static files)
+    #    These must come BEFORE the static file check.
+    # ==========================================================================
+
+    # Admin panel — always Laravel
+    RewriteRule ^admin(/.*)?$ laravel/public/index.php [L,QSA]
+
+    # Products JSON feed — always Laravel (live database data)
+    RewriteRule ^products\.json$ laravel/public/index.php [L,QSA]
+
+    # Search — always Laravel
+    RewriteRule ^search(/.*)?$ laravel/public/index.php [L,QSA]
+
+    # API routes — always Laravel
+    RewriteRule ^api(/.*)?$ laravel/public/index.php [L,QSA]
+
+    # ==========================================================================
+    # 3. Handle Authorization Header
+    # ==========================================================================
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # ==========================================================================
+    # 4. Serve static files directly (CSS, JS, images, HTML pages)
+    # ==========================================================================
     RewriteCond %{REQUEST_FILENAME} -f [OR]
     RewriteCond %{REQUEST_FILENAME} -d
     RewriteRule ^ - [L]
 
-    # 2. Route API/Admin requests to Laravel
-    # This rewrites /admin/... to /laravel/public/index.php
-    RewriteRule ^(admin|api|sanctum|nova|telescope|_debugbar)(/.*)?$ laravel/public/index.php [L,QSA]
-
-    # 3. Handle SPA routing (if using client-side routing, fallback to index.html)
-    # For now, we fallback to 404.html if not found
-    ErrorDocument 404 /404.html
+    # ==========================================================================
+    # 5. Everything else falls through to Laravel
+    #    (e.g. /products/new-slug that has no static HTML yet,
+    #     /collections/... if we want Laravel to handle them)
+    # ==========================================================================
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^ laravel/public/index.php [L,QSA]
 </IfModule>
 
+# ==========================================================================
+# Security Headers
+# ==========================================================================
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+    Header unset X-Powered-By
+</IfModule>
+
+# ==========================================================================
+# Compression
+# ==========================================================================
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/css
+    AddOutputFilterByType DEFLATE application/json application/javascript text/javascript
+    AddOutputFilterByType DEFLATE application/xml text/xml
+    AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# ==========================================================================
+# Static Asset Caching
+# ==========================================================================
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+# ==========================================================================
+# Error Documents
+# ==========================================================================
+ErrorDocument 404 /404.html
