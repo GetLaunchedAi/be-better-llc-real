@@ -14,7 +14,7 @@ fi
 
 # 2. Frontend Build (Eleventy)
 echo "▸ Building Frontend (Eleventy)..."
-npm install --omit=dev
+npm install
 npm run build
 
 # 3. Backend Setup (Laravel)
