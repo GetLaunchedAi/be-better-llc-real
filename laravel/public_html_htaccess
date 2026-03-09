@@ -1,0 +1,118 @@
+# ==========================================================================
+# Be Better BSBL — Laravel Production .htaccess (Cloudways root)
+# Serves from public_html/ with Laravel project files in same directory.
+# ==========================================================================
+
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+
+    RewriteEngine On
+
+    # --------------------------------------------------------------------------
+    # 0. SECURITY — Block access to sensitive files & directories
+    #    Since Laravel project files live in the webroot on Cloudways,
+    #    we must block direct access to non-public paths.
+    # --------------------------------------------------------------------------
+    # Block dotfiles (except .well-known for SSL verification)
+    RewriteRule (^|/)\.((?!well-known).+) - [F,L]
+
+    # Block sensitive directories
+    RewriteRule ^app(/|$) - [F,L]
+    RewriteRule ^bootstrap(/|$) - [F,L]
+    RewriteRule ^config(/|$) - [F,L]
+    RewriteRule ^database(/|$) - [F,L]
+    RewriteRule ^resources(/|$) - [F,L]
+    RewriteRule ^routes(/|$) - [F,L]
+    RewriteRule ^storage/(?!app/public/) - [F,L]
+    RewriteRule ^vendor(/|$) - [F,L]
+
+    # Block sensitive files
+    RewriteRule ^artisan$ - [F,L]
+    RewriteRule ^composer\.(json|lock)$ - [F,L]
+    RewriteRule ^deploy\.sh$ - [F,L]
+    RewriteRule ^products\.json$ - [F,L]
+
+    # --------------------------------------------------------------------------
+    # 1. Force HTTPS (Cloudways / Varnish compatible)
+    # --------------------------------------------------------------------------
+    RewriteCond %{HTTP:X-Forwarded-Proto} !https
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # --------------------------------------------------------------------------
+    # 2. Redirect legacy /api/*.php → 410 Gone (deprecated)
+    # --------------------------------------------------------------------------
+    RewriteRule ^api/products-get\.php$   - [G,L]
+    RewriteRule ^api/products-save\.php$  - [G,L]
+    RewriteRule ^api/upload-image\.php$   - [G,L]
+    RewriteRule ^api/login\.php$          - [G,L]
+    RewriteRule ^api/logout\.php$         - [G,L]
+    RewriteRule ^api/me\.php$             - [G,L]
+
+    # --------------------------------------------------------------------------
+    # 3. Redirect Trailing Slashes → canonical no-trailing-slash
+    # --------------------------------------------------------------------------
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [L,R=301]
+
+    # --------------------------------------------------------------------------
+    # 4. Handle Authorization Header
+    # --------------------------------------------------------------------------
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # --------------------------------------------------------------------------
+    # 5. Send all non-file/non-directory requests to Laravel front controller
+    # --------------------------------------------------------------------------
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+</IfModule>
+
+# ==========================================================================
+# Security Headers
+# ==========================================================================
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+    Header unset X-Powered-By
+</IfModule>
+
+# ==========================================================================
+# Compression
+# ==========================================================================
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/css
+    AddOutputFilterByType DEFLATE application/json application/javascript text/javascript
+    AddOutputFilterByType DEFLATE application/xml text/xml
+    AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# ==========================================================================
+# Static Asset Caching
+# ==========================================================================
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType application/x-font-woff "access plus 1 year"
+    ExpiresByType application/x-font-woff2 "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+# ==========================================================================
+# Error Documents
+# ==========================================================================
+ErrorDocument 410 '{"ok":false,"error":"This endpoint has been permanently retired. Use /admin for product management."}'
+ErrorDocument 503 '{"ok":false,"error":"Service temporarily unavailable — maintenance in progress."}'
+

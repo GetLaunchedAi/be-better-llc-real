@@ -1,0 +1,23 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # Force HTTPS
+    RewriteCond %{HTTP:X-Forwarded-Proto} !https
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # 1. Serve static files (Eleventy) directly if they exist
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # 2. Route API/Admin requests to Laravel
+    # This rewrites /admin/... to /laravel/public/index.php
+    RewriteRule ^(admin|api|sanctum|nova|telescope|_debugbar)(/.*)?$ laravel/public/index.php [L,QSA]
+
+    # 3. Handle SPA routing (if using client-side routing, fallback to index.html)
+    # For now, we fallback to 404.html if not found
+    ErrorDocument 404 /404.html
+</IfModule>
+

@@ -7,6 +7,7 @@
 module.exports = function (eleventyConfig) {
   // Copy static assets straight through to the output folder
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
+  eleventyConfig.addPassthroughCopy({ "src/.htaccess": ".htaccess" });
 
   // Cloudways-friendly PHP endpoints (no Eleventy rebuild required)
   // - Copy /src/api → /api in the output so PHP can execute endpoints directly
