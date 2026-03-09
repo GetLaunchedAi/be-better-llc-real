@@ -61,7 +61,7 @@
                 <div>
                     <div class="aspect-square rounded-lg overflow-hidden bg-gray-100 border border-gray-200">
                         @if($productImages->isNotEmpty())
-                            <img src="{{ $firstImg }}" alt="{{ $product->title }}" class="w-full h-full object-cover" />
+                            <img src="{{ str_replace([' ', '(', ')'], ['%20', '%28', '%29'], $firstImg) }}" alt="{{ $product->title }}" class="w-full h-full object-cover" />
                         @else
                             <div class="w-full h-full flex items-center justify-center text-gray-400">
                                 <div class="text-center">
@@ -78,7 +78,7 @@
                     <div class="flex gap-2 mt-3 overflow-x-auto">
                         @foreach($productImages->take(5) as $img)
                         <div class="w-16 h-16 flex-shrink-0 rounded border border-gray-200 overflow-hidden bg-gray-50">
-                            <img src="{{ $img->thumb_path ?? $img->path }}" alt="" class="w-full h-full object-cover" />
+                            <img src="{{ str_replace([' ', '(', ')'], ['%20', '%28', '%29'], $img->thumb_path ?? $img->path) }}" alt="" class="w-full h-full object-cover" />
                         </div>
                         @endforeach
                         @if($productImages->count() > 5)

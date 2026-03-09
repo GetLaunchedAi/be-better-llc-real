@@ -82,7 +82,7 @@
                  @drop.prevent="drop($event, {{ $img->id }})">
 
                 <div class="aspect-square">
-                    <img src="{{ $img->path }}" alt="{{ $img->alt_text }}" class="w-full h-full object-cover" loading="lazy" />
+                    <img src="{{ str_replace([' ', '(', ')'], ['%20', '%28', '%29'], $img->path) }}" alt="{{ $img->alt_text }}" class="w-full h-full object-cover" loading="lazy" />
                 </div>
 
                 {{-- Overlay actions --}}

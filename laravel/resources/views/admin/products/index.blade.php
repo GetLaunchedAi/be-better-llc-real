@@ -107,7 +107,7 @@
                     </td>
                     <td class="px-4 py-3">
                         <div class="flex items-center gap-3">
-                            <img src="{{ $product->image ?? '/assets/img/placeholder.jpg' }}"
+                            <img src="{{ str_replace([' ', '(', ')'], ['%20', '%28', '%29'], $product->image ?? '/assets/img/placeholder.jpg') }}"
                                  alt="{{ $product->title }}"
                                  class="w-10 h-10 rounded object-cover bg-gray-100 flex-shrink-0" />
                             <div class="min-w-0">

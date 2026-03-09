@@ -181,7 +181,7 @@
             <h2 class="text-base font-semibold text-gray-900 mb-3">Primary image</h2>
             <div class="mb-3">
                 <img id="primary-img-preview"
-                     src="{{ old('image', $p->image ?? '/assets/img/placeholder.jpg') }}"
+                     src="{{ str_replace([' ', '(', ')'], ['%20', '%28', '%29'], old('image', $p->image ?? '/assets/img/placeholder.jpg')) }}"
                      alt="Primary image"
                      class="w-full aspect-square object-cover rounded-lg bg-gray-100 border border-gray-200" />
             </div>
