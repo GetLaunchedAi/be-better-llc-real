@@ -268,10 +268,19 @@ class ProductController extends Controller
 
     private function syncRelations(Product $product, Request $request): void
     {
-        // Collections
-        if ($request->has('collections')) {
-            $product->collections()->sync($request->input('collections', []));
+        // Collections — handle both existing IDs and new collection names
+        $collectionIds = $request->input('collections', []);
+        $newCollectionNames = array_filter($request->input('new_collections', []), fn ($v) => trim($v) !== '');
+
+        foreach ($newCollectionNames as $name) {
+            $collection = Collection::firstOrCreate(
+                ['slug' => Str::slug($name)],
+                ['title' => trim($name)]
+            );
+            $collectionIds[] = $collection->id;
         }
+
+        $product->collections()->sync(array_unique($collectionIds));
 
         // Tags — handle both existing IDs and new tag names
         $tagIds = $request->input('tags', []);

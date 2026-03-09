@@ -193,18 +193,91 @@
         </div>
 
         {{-- Collections --}}
-        <div class="bg-white border border-gray-200 rounded-lg shadow-sm p-5">
+        @php $selectedCols = old('collections', $p ? $p->collections->pluck('id')->toArray() : []); @endphp
+        <div class="bg-white border border-gray-200 rounded-lg shadow-sm p-5"
+             x-data="collectionManager({{ json_encode($collections->map(fn($c) => ['id' => $c->id, 'title' => $c->title])) }}, {{ json_encode(array_map('intval', $selectedCols)) }})">
             <h2 class="text-base font-semibold text-gray-900 mb-3">Collections</h2>
-            @php $selectedCols = old('collections', $p ? $p->collections->pluck('id')->toArray() : []); @endphp
-            <div class="space-y-2 max-h-48 overflow-y-auto">
-                @foreach($collections as $c)
-                <label class="flex items-center gap-2 text-sm text-gray-700">
-                    <input type="checkbox" name="collections[]" value="{{ $c->id }}"
-                           {{ in_array($c->id, $selectedCols) ? 'checked' : '' }}
-                           class="rounded border-gray-300 text-brand-600" />
-                    {{ $c->title }}
-                </label>
-                @endforeach
+
+            {{-- Dropdown toggle --}}
+            <div class="relative">
+                <button type="button" @click="open = !open"
+                        class="w-full flex items-center justify-between rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-left focus:border-brand-500 focus:ring-1 focus:ring-brand-500 outline-none">
+                    <span x-text="selectedLabel()" class="truncate text-gray-700"></span>
+                    <svg class="w-4 h-4 text-gray-400 flex-shrink-0 transition-transform" :class="open && 'rotate-180'" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+
+                {{-- Dropdown panel --}}
+                <div x-show="open" x-cloak x-transition @click.away="open = false"
+                     class="absolute z-20 mt-1 w-full rounded-md border border-gray-200 bg-white shadow-lg">
+
+                    {{-- Search filter --}}
+                    <div class="p-2 border-b border-gray-100">
+                        <input type="text" x-model="search" placeholder="Search collections..."
+                               @click.stop
+                               class="w-full rounded-md border border-gray-300 px-2.5 py-1.5 text-xs focus:border-brand-500 focus:ring-1 focus:ring-brand-500 outline-none" />
+                    </div>
+
+                    {{-- Collection list --}}
+                    <div class="max-h-48 overflow-y-auto p-1">
+                        <template x-for="col in filteredCollections()" :key="col.id">
+                            <label class="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-gray-50 cursor-pointer text-sm text-gray-700">
+                                <input type="checkbox"
+                                       :value="col.id"
+                                       :checked="selected.includes(col.id)"
+                                       @change="toggleCollection(col.id)"
+                                       class="rounded border-gray-300 text-brand-600" />
+                                <span x-text="col.title"></span>
+                            </label>
+                        </template>
+
+                        {{-- Inline new-collection items --}}
+                        <template x-for="(name, i) in newCollections" :key="'new-'+i">
+                            <div class="flex items-center gap-2 px-2 py-1.5 text-sm text-gray-700">
+                                <input type="checkbox" checked disabled class="rounded border-gray-300 text-brand-600" />
+                                <span x-text="name" class="flex-1"></span>
+                                <button type="button" @click="newCollections.splice(i, 1)" class="text-gray-400 hover:text-red-600 text-xs">&times;</button>
+                            </div>
+                        </template>
+
+                        <p x-show="filteredCollections().length === 0 && newCollections.length === 0" class="px-2 py-1.5 text-xs text-gray-400">No collections found.</p>
+                    </div>
+
+                    {{-- Add new collection --}}
+                    <div class="border-t border-gray-100 p-2">
+                        <p class="text-xs text-gray-500 mb-1.5">Add new collection:</p>
+                        <div class="flex gap-2">
+                            <input type="text" x-model="newName" placeholder="Collection name"
+                                   @keydown.enter.prevent="addCollection" @click.stop
+                                   class="flex-1 rounded-md border border-gray-300 px-2 py-1.5 text-xs focus:border-brand-500 focus:ring-1 focus:ring-brand-500 outline-none" />
+                            <button type="button" @click.stop="addCollection"
+                                    class="rounded bg-gray-100 px-2.5 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-200 border border-gray-300">Add</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{-- Hidden inputs for form submission --}}
+            <template x-for="id in selected" :key="'sel-'+id">
+                <input type="hidden" name="collections[]" :value="id" />
+            </template>
+            <template x-for="(name, i) in newCollections" :key="'newcol-'+i">
+                <input type="hidden" name="new_collections[]" :value="name" />
+            </template>
+
+            {{-- Selected badges --}}
+            <div class="flex flex-wrap gap-1.5 mt-2" x-show="selected.length > 0 || newCollections.length > 0">
+                <template x-for="id in selected" :key="'badge-'+id">
+                    <span class="inline-flex items-center gap-1 rounded-full bg-brand-50 px-2 py-0.5 text-xs text-brand-700">
+                        <span x-text="collectionTitle(id)"></span>
+                        <button type="button" @click="toggleCollection(id)" class="text-brand-400 hover:text-red-600">&times;</button>
+                    </span>
+                </template>
+                <template x-for="(name, i) in newCollections" :key="'nbadge-'+i">
+                    <span class="inline-flex items-center gap-1 rounded-full bg-green-50 px-2 py-0.5 text-xs text-green-700">
+                        <span x-text="name"></span>
+                        <button type="button" @click="newCollections.splice(i, 1)" class="text-green-400 hover:text-red-600">&times;</button>
+                    </span>
+                </template>
             </div>
         </div>
 
@@ -269,6 +342,50 @@
 
 @push('scripts')
 <script>
+function collectionManager(allCollections, initialSelected) {
+    return {
+        open: false,
+        search: '',
+        newName: '',
+        collections: allCollections,          // [{id, title}, ...]
+        selected: initialSelected || [],      // [id, id, ...]
+        newCollections: [],                    // ['name', 'name', ...]
+        toggleCollection(id) {
+            const idx = this.selected.indexOf(id);
+            if (idx === -1) {
+                this.selected.push(id);
+            } else {
+                this.selected.splice(idx, 1);
+            }
+        },
+        addCollection() {
+            const name = this.newName.trim();
+            if (name && !this.newCollections.includes(name)) {
+                this.newCollections.push(name);
+                this.newName = '';
+            }
+        },
+        filteredCollections() {
+            if (!this.search) return this.collections;
+            const q = this.search.toLowerCase();
+            return this.collections.filter(c => c.title.toLowerCase().includes(q));
+        },
+        collectionTitle(id) {
+            const col = this.collections.find(c => c.id === id);
+            return col ? col.title : '';
+        },
+        selectedLabel() {
+            const count = this.selected.length + this.newCollections.length;
+            if (count === 0) return 'Select collections...';
+            if (count === 1) {
+                if (this.selected.length === 1) return this.collectionTitle(this.selected[0]);
+                return this.newCollections[0];
+            }
+            return count + ' collections selected';
+        }
+    }
+}
+
 function tagManager() {
     return {
         newTag: '',
