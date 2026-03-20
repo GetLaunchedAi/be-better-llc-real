@@ -13,6 +13,9 @@ _site/storage
 # Eleventy cache
 .eleventy.cache/
 
+# Credentials
+.ssh-credentials
+
 # Environment variables
 .env
 .env.local

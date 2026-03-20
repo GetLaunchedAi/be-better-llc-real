@@ -1,5 +1,10 @@
 {{-- Header + announcement bar --}}
-@php $currentUrl = request()->getPathInfo(); @endphp
+@php
+    $currentUrl = request()->getPathInfo();
+    $navGroups = \App\Models\Page::navGrouped();
+    $primaryNav = $navGroups['primary'];
+    $metaNav = $navGroups['meta'];
+@endphp
 
 <header class="site-header">
   <div class="announcement" role="region" aria-label="Announcement">
@@ -57,24 +62,11 @@
         </div>
 
         <div class="nav-items">
-          <a class="nav-link nav-link--primary @if($currentUrl === '/collections/sale/' || $currentUrl === '/collections/sale') is-active @endif" href="/collections/sale/">
-            HOLIDAYDEALS <span class="nav-caret" aria-hidden="true">▾</span>
+          @foreach($primaryNav as $navItem)
+          <a class="nav-link nav-link--primary @if(rtrim($currentUrl, '/') === rtrim($navItem->url, '/')) is-active @endif" href="{{ $navItem->url }}">
+            {{ $navItem->nav_label ?: $navItem->title }} <span class="nav-caret" aria-hidden="true"></span>
           </a>
-          <a class="nav-link nav-link--primary @if($currentUrl === '/collections/men/' || $currentUrl === '/collections/men') is-active @endif" href="/collections/men/">
-            MENS <span class="nav-caret" aria-hidden="true">▾</span>
-          </a>
-          <a class="nav-link nav-link--primary @if($currentUrl === '/collections/women/' || $currentUrl === '/collections/women') is-active @endif" href="/collections/women/">
-            WOMENS <span class="nav-caret" aria-hidden="true">▾</span>
-          </a>
-          <a class="nav-link nav-link--primary" href="/collections/bags/">
-            BAGS <span class="nav-caret" aria-hidden="true">▾</span>
-          </a>
-          <a class="nav-link nav-link--primary" href="/collections/gear/">
-            GEAR <span class="nav-caret" aria-hidden="true">▾</span>
-          </a>
-          <a class="nav-link nav-link--primary @if($currentUrl === '/collections/youth/' || $currentUrl === '/collections/youth') is-active @endif" href="/collections/youth/">
-            YOUTH <span class="nav-caret" aria-hidden="true">▾</span>
-          </a>
+          @endforeach
 
           <a class="nav-link nav-link--mobileonly" href="/search/#focus">SEARCH</a>
           <a class="nav-link nav-link--mobileonly" href="/cart/">
@@ -85,10 +77,9 @@
         <div class="nav-drawer__divider" aria-hidden="true"></div>
 
         <div class="nav-drawer__meta">
-          <a class="nav-link nav-link--muted" href="/shipping/">Shipping</a>
-          <a class="nav-link nav-link--muted" href="/returns/">Returns</a>
-          <a class="nav-link nav-link--muted" href="/privacy/">Privacy</a>
-          <a class="nav-link nav-link--muted" href="/terms/">Terms</a>
+          @foreach($metaNav as $navItem)
+          <a class="nav-link nav-link--muted" href="{{ $navItem->url }}">{{ $navItem->nav_label ?: $navItem->title }}</a>
+          @endforeach
         </div>
       </nav>
 

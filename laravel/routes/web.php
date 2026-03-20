@@ -10,6 +10,9 @@ use App\Http\Controllers\Admin\VariantController as AdminVariantController;
 use App\Http\Controllers\Admin\ImageController as AdminImageController;
 use App\Http\Controllers\Admin\BulkController as AdminBulkController;
 use App\Http\Controllers\Admin\HomepageContentController as AdminHomepageContentController;
+use App\Http\Controllers\Admin\NavController as AdminNavController;
+use App\Http\Controllers\Admin\PageController as AdminPageController;
+use App\Http\Controllers\NavItemController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 
@@ -43,6 +46,7 @@ Route::get('/', function () {
 // JSON Feed — /products.json
 Route::get('/products.json', [ProductController::class, 'json'])->name('products.json');
 Route::get('/homepage-content.json', [HomepageContentController::class, 'json'])->name('homepage-content.json');
+Route::get('/nav-items.json', [NavItemController::class, 'json'])->name('nav-items.json');
 
 // PDP — Product Detail Page
 Route::get('/products/{slug}', [ProductController::class, 'show'])
@@ -85,6 +89,16 @@ Route::prefix('admin')->middleware(['web', 'admin'])->name('admin.')->group(func
     // Homepage marketing content editor
     Route::get('/homepage-content/edit', [AdminHomepageContentController::class, 'edit'])->name('homepage-content.edit');
     Route::put('/homepage-content', [AdminHomepageContentController::class, 'update'])->name('homepage-content.update');
+
+    // Navigation editor (legacy — kept for backward compat)
+    Route::get('/navigation', [AdminNavController::class, 'edit'])->name('navigation.edit');
+    Route::put('/navigation', [AdminNavController::class, 'update'])->name('navigation.update');
+
+    // Pages management
+    Route::get('/pages', [AdminPageController::class, 'index'])->name('pages.index');
+    Route::get('/pages/{page}/edit', [AdminPageController::class, 'edit'])->name('pages.edit');
+    Route::put('/pages/{page}', [AdminPageController::class, 'update'])->name('pages.update');
+    Route::post('/pages/{page}/toggle-nav', [AdminPageController::class, 'toggleNav'])->name('pages.toggle-nav');
 
     // Product duplication
     Route::post('/products/{product}/duplicate', [AdminProductController::class, 'duplicate'])->name('products.duplicate');

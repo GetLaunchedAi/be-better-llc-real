@@ -35,6 +35,7 @@
     # JSON feeds (live database data, not static)
     RewriteRule ^products\.json$ _laravel.php [L,QSA]
     RewriteRule ^homepage-content\.json$ _laravel.php [L,QSA]
+    RewriteRule ^nav-items\.json$ _laravel.php [L,QSA]
 
     # Search
     RewriteRule ^search(/.*)?$ _laravel.php [L,QSA]

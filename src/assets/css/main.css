@@ -666,9 +666,14 @@ h4{ font-size: 16px; }
 .nav-link--mobileonly{ display:block; }
 
 .nav-caret{
-  color: var(--muted);
-  font-size: 12px;
-  transform: translateY(-1px);
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 3.5px solid transparent;
+  border-right: 3.5px solid transparent;
+  border-top: 4.5px solid var(--muted);
+  vertical-align: middle;
+  margin-left: 2px;
 }
 
 .nav-drawer__divider{
