@@ -5,22 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>{{ $title ?? 'Admin' }} · Be Better BSBL Admin</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: { 50:'#f0f7ff', 100:'#e0effe', 200:'#bae0fd', 300:'#7cc8fb', 400:'#37adf7', 500:'#0d93e8', 600:'#0174c6', 700:'#025ca1', 800:'#064e85', 900:'#0b416e', DEFAULT:'#0b416e' },
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        [x-cloak] { display: none !important; }
-        .drag-over { outline: 2px dashed #0d93e8; outline-offset: -2px; background: #f0f7ff; }
-    </style>
+    <link rel="stylesheet" href="{{ asset('build/admin.css') }}" />
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 <body class="h-full">

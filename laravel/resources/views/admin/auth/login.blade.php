@@ -4,18 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Sign In · Be Better BSBL Admin</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: { 50:'#f0f7ff', 100:'#e0effe', 200:'#bae0fd', 300:'#7cc8fb', 400:'#37adf7', 500:'#0d93e8', 600:'#0174c6', 700:'#025ca1', 800:'#064e85', 900:'#0b416e', DEFAULT:'#0b416e' },
-                    }
-                }
-            }
-        }
-    </script>
+    <link rel="stylesheet" href="{{ asset('build/admin.css') }}" />
 </head>
 <body class="h-full flex items-center justify-center">
     <div class="w-full max-w-sm px-6">

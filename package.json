@@ -5,10 +5,12 @@
   "type": "commonjs",
   "scripts": {
     "dev": "eleventy --serve --watch",
-    "build": "eleventy"
+    "build": "eleventy && npx tailwindcss -i ./laravel/resources/css/admin.css -o ./_site/build/admin.css -c ./laravel/tailwind.config.js",
+    "build:admin-css": "npx tailwindcss -i ./laravel/resources/css/admin.css -o ./_site/build/admin.css -c ./laravel/tailwind.config.js"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^3.1.2"
+    "@11ty/eleventy": "^3.1.2",
+    "tailwindcss": "^3.4.0"
   },
   "dependencies": {
     "nvm": "^0.0.4"

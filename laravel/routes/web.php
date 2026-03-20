@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\ImageController as AdminImageController;
 use App\Http\Controllers\Admin\BulkController as AdminBulkController;
 use App\Http\Controllers\Admin\HomepageContentController as AdminHomepageContentController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,19 @@ use Illuminate\Support\Facades\Route;
 | CanonicalRedirect middleware, so only canonical (no-trailing-slash)
 | routes are defined here.
 */
+
+// Storage uploads — fallback when symlink is missing (e.g. Cloudways deploy)
+// Apache serves directly when _site/storage symlink exists; otherwise Laravel streams
+Route::get('/storage/uploads/{path}', function (string $path) {
+    $path = str_replace(['../', '..\\'], '', $path);
+    if (! Storage::disk('public')->exists('uploads/' . $path)) {
+        abort(404);
+    }
+
+    return response()->file(Storage::disk('public')->path('uploads/' . $path), [
+        'Content-Type' => Storage::disk('public')->mimeType('uploads/' . $path) ?: 'application/octet-stream',
+    ]);
+})->where('path', '.*')->name('storage.uploads');
 
 // Homepage
 Route::get('/', function () {
