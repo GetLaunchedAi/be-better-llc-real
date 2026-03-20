@@ -1,0 +1,14 @@
+/vendor/
+/node_modules/
+
+/storage/*.key
+/storage/framework/cache/data/*
+/storage/framework/sessions/*
+/storage/framework/views/*
+
+.env
+
+/public/hot
+/public/storage
+
+composer.phar

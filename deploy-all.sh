@@ -1,91 +1,104 @@
 #!/usr/bin/env bash
 # ==========================================================================
 # Be Better BSBL — Full Stack Deployment Script
-# For use on Cloudways (PHP Custom Application)
+# Cloudways "Deploy via Git" — webroot is _site/
 # ==========================================================================
 
-set -uo pipefail  # removed -e so script continues on non-fatal errors
+set -uo pipefail
 
-# 1. Pull latest code
-if [ -d ".git" ]; then
-    echo "▸ Pulling latest code..."
-    git pull --ff-only origin main || echo "  ⚠ Git pull failed. Continuing..."
-fi
+REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$REPO_ROOT"
 
-# 2. Frontend Build (Eleventy)
+echo "╔══════════════════════════════════════════════╗"
+echo "║  Be Better BSBL — Deploy                     ║"
+echo "╚══════════════════════════════════════════════╝"
+echo ""
+
+# --------------------------------------------------------------------------
+# 1. Frontend Build (Eleventy)
+# --------------------------------------------------------------------------
 echo "▸ Building Frontend (Eleventy)..."
-npm install
+npm install --production=false
 npm run build
+echo "  ✓ _site/ built"
+echo ""
 
-# 3. Backend Setup (Laravel)
-echo "▸ Setting up Backend (Laravel)..."
+# --------------------------------------------------------------------------
+# 2. Laravel Setup
+# --------------------------------------------------------------------------
+echo "▸ Setting up Laravel..."
 cd laravel
 
-# Ensure required directories exist and are writable
 mkdir -p bootstrap/cache storage/framework/{cache,sessions,views} storage/logs storage/app/public
 chmod -R 775 bootstrap/cache storage 2>/dev/null || true
 
 if [ ! -f ".env" ]; then
-    echo "  ⚠ .env file missing in laravel/! Copying example..."
+    echo "  ⚠ .env missing in laravel/ — copying .env.example"
     cp .env.example .env
-    echo "  ⚠ Please configure .env manually!"
+    echo "  ⚠ Configure laravel/.env before going live!"
 fi
 
-# Install Composer dependencies
 composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist
 
-# Run migrations
 php artisan migrate --force
+echo "  ✓ Migrations complete"
 
-# Import products from JSON to Database
 echo "▸ Importing products from JSON..."
-php artisan app:import-products-json
+php artisan app:import-products-json 2>/dev/null || echo "  ⚠ Import skipped or failed"
 
-# Cache config/routes/views
 php artisan config:cache
 php artisan route:cache
 php artisan view:cache
 
-# Link storage
+# Standard Laravel storage link (laravel/public/storage → ../storage/app/public)
 php artisan storage:link 2>/dev/null || true
 
-cd ..
+cd "$REPO_ROOT"
+echo "  ✓ Laravel ready"
+echo ""
 
-# 4. Deploy Frontend assets
-echo "▸ Deploying Frontend assets..."
-cp -r _site/* .
+# --------------------------------------------------------------------------
+# 3. Create storage symlink inside _site/ (webroot)
+#    So /storage/uploads/... resolves to Laravel's public storage disk.
+# --------------------------------------------------------------------------
+echo "▸ Linking _site/storage → Laravel public storage..."
+STORAGE_LINK="_site/storage"
+STORAGE_TARGET="../laravel/storage/app/public"
 
-# 5. Remove static files that MUST be handled by Laravel
-#    These get recreated by Eleventy but conflict with Laravel routes.
-echo "▸ Cleaning up conflicting static files..."
-rm -rf admin 2>/dev/null || true         # /admin → Laravel admin panel
-rm -f products.json 2>/dev/null || true  # /products.json → Laravel dynamic feed
-rm -rf search 2>/dev/null || true        # /search → Laravel search
-
-# 6. Install root .htaccess (routes traffic between static & Laravel)
-echo "▸ Updating .htaccess..."
-if [ -f "root-htaccess" ]; then
-    cp root-htaccess .htaccess
+if [ -L "$STORAGE_LINK" ]; then
+    rm "$STORAGE_LINK"
 fi
+ln -s "$STORAGE_TARGET" "$STORAGE_LINK"
+echo "  ✓ _site/storage symlinked"
+echo ""
 
-# 7. Permissions (suppress errors — use Cloudways "Reset Permission" if needed)
+# --------------------------------------------------------------------------
+# 4. Permissions
+# --------------------------------------------------------------------------
 echo "▸ Setting permissions..."
 chmod -R 775 laravel/storage laravel/bootstrap/cache 2>/dev/null || true
+echo "  ✓ Permissions set"
+echo ""
 
-# 8. Clear Laravel cache so new routes/config take effect
+# --------------------------------------------------------------------------
+# 5. Clear caches so new routes/config take effect
+# --------------------------------------------------------------------------
 echo "▸ Clearing Laravel caches..."
 cd laravel
 php artisan cache:clear 2>/dev/null || true
 php artisan route:cache 2>/dev/null || true
 php artisan config:cache 2>/dev/null || true
-cd ..
-
+cd "$REPO_ROOT"
+echo "  ✓ Caches refreshed"
 echo ""
+
 echo "╔══════════════════════════════════════════════╗"
 echo "║  ✓ Deployment complete!                      ║"
 echo "╠══════════════════════════════════════════════╣"
-echo "║  Frontend:  Static pages served from root    ║"
-echo "║  Backend:   /admin, /products.json, /search  ║"
-echo "║             all routed to Laravel             ║"
+echo "║  Webroot:   _site/                           ║"
+echo "║  Static:    HTML pages served from _site/    ║"
+echo "║  Dynamic:   /admin, /products.json, /search  ║"
+echo "║             routed to Laravel via _laravel.php║"
+echo "║  Uploads:   _site/storage → Laravel storage  ║"
 echo "╚══════════════════════════════════════════════╝"
 echo ""

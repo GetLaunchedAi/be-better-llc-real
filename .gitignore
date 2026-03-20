@@ -7,6 +7,9 @@ node_modules/
 dist/
 build/
 
+# Deploy-time symlink (created by deploy-all.sh)
+_site/storage
+
 # Eleventy cache
 .eleventy.cache/
 

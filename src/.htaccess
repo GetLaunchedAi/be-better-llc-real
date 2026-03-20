@@ -1,27 +1,113 @@
-# 1. Force HTTPS (Cloudways/Varnish compatible)
-RewriteEngine On
-RewriteCond %{HTTP:X-Forwarded-Proto} !https
-RewriteCond %{HTTPS} off
-RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-
-# 2. Clean URLs: Remove .html extension
-# If a user requests /about.html, redirect to /about
-RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /.*\.html\ HTTP/
-RewriteRule ^(.*)\.html$ /$1 [R=301,L]
-
-# If a user requests /about, serve /about.html internally
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME}\.html -f
-RewriteRule ^(.*)$ $1.html [L]
-
-# 3. Handle 404 errors
-ErrorDocument 404 /404.html
-
-# 4. Security: Disable Directory Browsing
-Options -Indexes
-
-# 5. API Protection
-# Ensure PHP files in the api folder can be executed but not browsed
 <IfModule mod_rewrite.c>
-    RewriteRule ^api/.*\.php$ - [L]
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+
+    Options +FollowSymLinks
+    RewriteEngine On
+    RewriteBase /
+
+    # ==========================================================================
+    # 1. Force HTTPS (Cloudways / Varnish compatible)
+    # ==========================================================================
+    RewriteCond %{HTTP:X-Forwarded-Proto} !https
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # ==========================================================================
+    # 2. Legacy API endpoints — 410 Gone
+    # ==========================================================================
+    RewriteRule ^api/products-get\.php$   - [G,L]
+    RewriteRule ^api/products-save\.php$  - [G,L]
+    RewriteRule ^api/upload-image\.php$   - [G,L]
+    RewriteRule ^api/login\.php$          - [G,L]
+    RewriteRule ^api/logout\.php$         - [G,L]
+    RewriteRule ^api/me\.php$             - [G,L]
+
+    # ==========================================================================
+    # 3. ALWAYS route these paths to Laravel (before static-file check)
+    #    _laravel.php bootstraps Laravel from ../laravel/
+    # ==========================================================================
+
+    # Admin panel
+    RewriteRule ^admin(/.*)?$ _laravel.php [L,QSA]
+
+    # JSON feeds (live database data, not static)
+    RewriteRule ^products\.json$ _laravel.php [L,QSA]
+    RewriteRule ^homepage-content\.json$ _laravel.php [L,QSA]
+
+    # Search
+    RewriteRule ^search(/.*)?$ _laravel.php [L,QSA]
+
+    # API routes
+    RewriteRule ^api(/.*)?$ _laravel.php [L,QSA]
+
+    # ==========================================================================
+    # 4. Handle Authorization Header
+    # ==========================================================================
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # ==========================================================================
+    # 5. Serve static files directly (CSS, JS, images, storage uploads, HTML)
+    # ==========================================================================
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # ==========================================================================
+    # 6. Clean URLs — serve .html for extensionless paths
+    # ==========================================================================
+    RewriteCond %{REQUEST_FILENAME}\.html -f
+    RewriteRule ^(.*)$ $1.html [L]
+
+    # ==========================================================================
+    # 7. Everything else falls through to Laravel
+    #    (new product slugs, collection pages, etc.)
+    # ==========================================================================
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^ _laravel.php [L,QSA]
 </IfModule>
+
+# ==========================================================================
+# Security Headers
+# ==========================================================================
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+    Header unset X-Powered-By
+</IfModule>
+
+# ==========================================================================
+# Compression
+# ==========================================================================
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/css
+    AddOutputFilterByType DEFLATE application/json application/javascript text/javascript
+    AddOutputFilterByType DEFLATE application/xml text/xml
+    AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# ==========================================================================
+# Static Asset Caching
+# ==========================================================================
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+# ==========================================================================
+# Error Documents
+# ==========================================================================
+ErrorDocument 404 /404.html
+ErrorDocument 410 '{"ok":false,"error":"This endpoint has been permanently retired."}'
