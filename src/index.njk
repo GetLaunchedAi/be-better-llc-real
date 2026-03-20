@@ -33,7 +33,7 @@ description: Be Better storefront homepage.
 <section id="new-arrivals" class="section section-home section-home--tight">
   <div class="container">
     <div class="new-arrivals-banner" aria-label="New Arrivals banner">
-      <img class="new-arrivals-banner__img" src="{{ homepageContent.newArrivals.bannerImage or '/assets/img/placeholder.jpg' }}" alt="{{ homepageContent.newArrivals.bannerAlt or '' }}" loading="lazy" decoding="async" />
+      <img class="new-arrivals-banner__img" data-cms="newArrivals.bannerImage" src="{{ homepageContent.newArrivals.bannerImage or '/assets/img/placeholder.jpg' }}" alt="{{ homepageContent.newArrivals.bannerAlt or '' }}" loading="lazy" decoding="async" />
       <div class="new-arrivals-banner__content">
         <h2 class="new-arrivals-banner__title">NEW ARRIVALS</h2>
         <div class="new-arrivals-banner__actions" aria-label="New arrivals quick links">
@@ -118,14 +118,14 @@ description: Be Better storefront homepage.
       </div>
 
       <div class="grip-media" aria-hidden="true">
-        <img class="grip-media__img" src="{{ homepageContent.grip.mainImage or '/assets/img/placeholder.jpg' }}" alt="{{ homepageContent.grip.mainAlt or '' }}" loading="lazy" decoding="async" />
+        <img class="grip-media__img" data-cms="grip.mainImage" src="{{ homepageContent.grip.mainImage or '/assets/img/placeholder.jpg' }}" alt="{{ homepageContent.grip.mainAlt or '' }}" loading="lazy" decoding="async" />
       </div>
     </div>
 
     <div class="grip-tiles" aria-label="Grip section tiles">
-      <div class="grip-tile"><img src="{{ homepageContent.grip.tiles[0].image or '/assets/img/placeholder.jpg' }}" alt="{{ homepageContent.grip.tiles[0].alt or '' }}" loading="lazy" decoding="async" /></div>
-      <div class="grip-tile"><img src="{{ homepageContent.grip.tiles[1].image or '/assets/img/placeholder.jpg' }}" alt="{{ homepageContent.grip.tiles[1].alt or '' }}" loading="lazy" decoding="async" /></div>
-      <div class="grip-tile"><img src="{{ homepageContent.grip.tiles[2].image or '/assets/img/placeholder.jpg' }}" alt="{{ homepageContent.grip.tiles[2].alt or '' }}" loading="lazy" decoding="async" /></div>
+      <div class="grip-tile"><img data-cms="grip.tiles.0.image" src="{{ homepageContent.grip.tiles[0].image or '/assets/img/placeholder.jpg' }}" alt="{{ homepageContent.grip.tiles[0].alt or '' }}" loading="lazy" decoding="async" /></div>
+      <div class="grip-tile"><img data-cms="grip.tiles.1.image" src="{{ homepageContent.grip.tiles[1].image or '/assets/img/placeholder.jpg' }}" alt="{{ homepageContent.grip.tiles[1].alt or '' }}" loading="lazy" decoding="async" /></div>
+      <div class="grip-tile"><img data-cms="grip.tiles.2.image" src="{{ homepageContent.grip.tiles[2].image or '/assets/img/placeholder.jpg' }}" alt="{{ homepageContent.grip.tiles[2].alt or '' }}" loading="lazy" decoding="async" /></div>
     </div>
   </div>
 </section>
@@ -162,3 +162,33 @@ description: Be Better storefront homepage.
     ]) }}
   </div>
 </section>
+
+<script>
+(function(){
+  fetch('/homepage-content.json')
+    .then(function(r){return r.ok?r.json():null})
+    .then(function(d){
+      if(!d)return;
+      function resolve(obj,path){
+        return path.split('.').reduce(function(o,k){return o&&o[k]},obj);
+      }
+      document.querySelectorAll('[data-cms]').forEach(function(el){
+        var val=resolve(d,el.dataset.cms);
+        if(val&&val!=='/assets/img/placeholder.jpg') el.src=val;
+      });
+      if(d.holidayDeals&&d.holidayDeals.tiles){
+        var deals=document.querySelectorAll('.promo-deal');
+        d.holidayDeals.tiles.forEach(function(t,i){
+          if(deals[i]&&t.image) deals[i].style.backgroundImage="url('"+t.image+"')";
+        });
+      }
+      if(d.featuredPromos&&d.featuredPromos.tiles){
+        var promos=document.querySelectorAll('.featured-promo__img');
+        d.featuredPromos.tiles.forEach(function(t,i){
+          if(promos[i]&&t.image) promos[i].src=t.image;
+        });
+      }
+    })
+    .catch(function(){});
+})();
+</script>
