@@ -10,7 +10,7 @@ description: Be Better storefront homepage.
 {% from "components/promo-tiles.njk" import promoTiles %}
 {% from "components/featured-promos.njk" import featuredPromos %}
 
-{{ hero() }}
+{{ hero(homepageContent.hero) }}
 
 <section id="youth" class="section section-home">
   <div class="container">
@@ -33,7 +33,7 @@ description: Be Better storefront homepage.
 <section id="new-arrivals" class="section section-home section-home--tight">
   <div class="container">
     <div class="new-arrivals-banner" aria-label="New Arrivals banner">
-      <img class="new-arrivals-banner__img" src="/assets/img/placeholder.jpg" alt="" loading="lazy" decoding="async" />
+      <img class="new-arrivals-banner__img" src="{{ homepageContent.newArrivals.bannerImage or '/assets/img/placeholder.jpg' }}" alt="{{ homepageContent.newArrivals.bannerAlt or '' }}" loading="lazy" decoding="async" />
       <div class="new-arrivals-banner__content">
         <h2 class="new-arrivals-banner__title">NEW ARRIVALS</h2>
         <div class="new-arrivals-banner__actions" aria-label="New arrivals quick links">
@@ -61,7 +61,24 @@ description: Be Better storefront homepage.
       <a class="btn btn-outline btn-sm" href="/collections/sale/">VIEW ALL <span aria-hidden="true">→</span></a>
     </div>
 
-    {{ promoTiles(products.holidayDeals.tiles) }}
+    {{ promoTiles([
+      {
+        kicker: products.holidayDeals.tiles[0].kicker,
+        headline: products.holidayDeals.tiles[0].headline,
+        ctaText: products.holidayDeals.tiles[0].ctaText,
+        url: products.holidayDeals.tiles[0].url,
+        image: homepageContent.holidayDeals.tiles[0].image or products.holidayDeals.tiles[0].image,
+        alt: homepageContent.holidayDeals.tiles[0].alt or ''
+      },
+      {
+        kicker: products.holidayDeals.tiles[1].kicker,
+        headline: products.holidayDeals.tiles[1].headline,
+        ctaText: products.holidayDeals.tiles[1].ctaText,
+        url: products.holidayDeals.tiles[1].url,
+        image: homepageContent.holidayDeals.tiles[1].image or products.holidayDeals.tiles[1].image,
+        alt: homepageContent.holidayDeals.tiles[1].alt or ''
+      }
+    ]) }}
   </div>
 </section>
 
@@ -101,14 +118,14 @@ description: Be Better storefront homepage.
       </div>
 
       <div class="grip-media" aria-hidden="true">
-        <img class="grip-media__img" src="/assets/img/placeholder.jpg" alt="" loading="lazy" decoding="async" />
+        <img class="grip-media__img" src="{{ homepageContent.grip.mainImage or '/assets/img/placeholder.jpg' }}" alt="{{ homepageContent.grip.mainAlt or '' }}" loading="lazy" decoding="async" />
       </div>
     </div>
 
     <div class="grip-tiles" aria-label="Grip section tiles">
-      <div class="grip-tile"><img src="/assets/img/placeholder.jpg" alt="" loading="lazy" decoding="async" /></div>
-      <div class="grip-tile"><img src="/assets/img/placeholder.jpg" alt="" loading="lazy" decoding="async" /></div>
-      <div class="grip-tile"><img src="/assets/img/placeholder.jpg" alt="" loading="lazy" decoding="async" /></div>
+      <div class="grip-tile"><img src="{{ homepageContent.grip.tiles[0].image or '/assets/img/placeholder.jpg' }}" alt="{{ homepageContent.grip.tiles[0].alt or '' }}" loading="lazy" decoding="async" /></div>
+      <div class="grip-tile"><img src="{{ homepageContent.grip.tiles[1].image or '/assets/img/placeholder.jpg' }}" alt="{{ homepageContent.grip.tiles[1].alt or '' }}" loading="lazy" decoding="async" /></div>
+      <div class="grip-tile"><img src="{{ homepageContent.grip.tiles[2].image or '/assets/img/placeholder.jpg' }}" alt="{{ homepageContent.grip.tiles[2].alt or '' }}" loading="lazy" decoding="async" /></div>
     </div>
   </div>
 </section>
@@ -123,6 +140,25 @@ description: Be Better storefront homepage.
       ctaUrl: ""
     }) }}
 
-    {{ featuredPromos(products.featuredPromos.tiles) }}
+    {{ featuredPromos([
+      {
+        caption: products.featuredPromos.tiles[0].caption,
+        url: products.featuredPromos.tiles[0].url,
+        image: homepageContent.featuredPromos.tiles[0].image or products.featuredPromos.tiles[0].image,
+        alt: homepageContent.featuredPromos.tiles[0].alt or ''
+      },
+      {
+        caption: products.featuredPromos.tiles[1].caption,
+        url: products.featuredPromos.tiles[1].url,
+        image: homepageContent.featuredPromos.tiles[1].image or products.featuredPromos.tiles[1].image,
+        alt: homepageContent.featuredPromos.tiles[1].alt or ''
+      },
+      {
+        caption: products.featuredPromos.tiles[2].caption,
+        url: products.featuredPromos.tiles[2].url,
+        image: homepageContent.featuredPromos.tiles[2].image or products.featuredPromos.tiles[2].image,
+        alt: homepageContent.featuredPromos.tiles[2].alt or ''
+      }
+    ]) }}
   </div>
 </section>

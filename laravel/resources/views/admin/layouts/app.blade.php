@@ -43,6 +43,10 @@
                                class="px-3 py-1.5 rounded-md text-sm font-medium {{ request()->routeIs('admin.products.*') ? 'bg-brand-800 text-white' : 'text-brand-200 hover:bg-brand-800 hover:text-white' }}">
                                 Products
                             </a>
+                            <a href="{{ route('admin.homepage-content.edit') }}"
+                               class="px-3 py-1.5 rounded-md text-sm font-medium {{ request()->routeIs('admin.homepage-content.*') ? 'bg-brand-800 text-white' : 'text-brand-200 hover:bg-brand-800 hover:text-white' }}">
+                                Homepage
+                            </a>
                             <a href="{{ route('home') }}" target="_blank"
                                class="px-3 py-1.5 rounded-md text-sm font-medium text-brand-200 hover:bg-brand-800 hover:text-white">
                                 View Store ↗

@@ -9,7 +9,7 @@
 {% macro promoTiles(tiles) %}
 <div class="promo-tiles promo-tiles--deals" aria-label="Promotions">
   {% for tile in (tiles or []) %}
-    <a class="promo-deal" href="{{ tile.url or '#' }}" style="background-image:url('{{ tile.image or '/assets/img/placeholder.jpg' }}')">
+    <a class="promo-deal" href="{{ tile.url or '#' }}" style="background-image:url('{{ tile.image or '/assets/img/placeholder.jpg' }}')" aria-label="{{ tile.alt or tile.headline or tile.title or 'Promotion' }}">
       <span class="promo-deal__overlay" aria-hidden="true"></span>
 
       <div class="promo-deal__content">

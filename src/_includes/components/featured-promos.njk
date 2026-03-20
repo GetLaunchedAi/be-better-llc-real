@@ -11,7 +11,7 @@
     {% for tile in (tiles or []) %}
       <a class="featured-promo" href="{{ tile.url or '#' }}">
         <div class="featured-promo__media">
-          <img class="featured-promo__img" src="{{ tile.image or '/assets/img/placeholder.jpg' }}" alt="" loading="lazy" decoding="async" />
+          <img class="featured-promo__img" src="{{ tile.image or '/assets/img/placeholder.jpg' }}" alt="{{ tile.alt or '' }}" loading="lazy" decoding="async" />
         </div>
         <div class="featured-promo__caption">
           <span class="featured-promo__text">{{ tile.caption }}</span>

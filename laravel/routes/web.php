@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CollectionController;
+use App\Http\Controllers\HomepageContentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\Admin\AuthController as AdminAuthController;
@@ -8,6 +9,7 @@ use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\VariantController as AdminVariantController;
 use App\Http\Controllers\Admin\ImageController as AdminImageController;
 use App\Http\Controllers\Admin\BulkController as AdminBulkController;
+use App\Http\Controllers\Admin\HomepageContentController as AdminHomepageContentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,6 +28,7 @@ Route::get('/', function () {
 
 // JSON Feed — /products.json
 Route::get('/products.json', [ProductController::class, 'json'])->name('products.json');
+Route::get('/homepage-content.json', [HomepageContentController::class, 'json'])->name('homepage-content.json');
 
 // PDP — Product Detail Page
 Route::get('/products/{slug}', [ProductController::class, 'show'])
@@ -64,6 +67,10 @@ Route::prefix('admin')->middleware(['web', 'admin'])->name('admin.')->group(func
     Route::get('/products/{product}/edit', [AdminProductController::class, 'edit'])->name('products.edit');
     Route::put('/products/{product}', [AdminProductController::class, 'update'])->name('products.update');
     Route::get('/products/{product}/preview', [AdminProductController::class, 'preview'])->name('products.preview');
+
+    // Homepage marketing content editor
+    Route::get('/homepage-content/edit', [AdminHomepageContentController::class, 'edit'])->name('homepage-content.edit');
+    Route::put('/homepage-content', [AdminHomepageContentController::class, 'update'])->name('homepage-content.update');
 
     // Product duplication
     Route::post('/products/{product}/duplicate', [AdminProductController::class, 'duplicate'])->name('products.duplicate');
