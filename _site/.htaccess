@@ -1,0 +1,27 @@
+# 1. Force HTTPS (Cloudways/Varnish compatible)
+RewriteEngine On
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# 2. Clean URLs: Remove .html extension
+# If a user requests /about.html, redirect to /about
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /.*\.html\ HTTP/
+RewriteRule ^(.*)\.html$ /$1 [R=301,L]
+
+# If a user requests /about, serve /about.html internally
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^(.*)$ $1.html [L]
+
+# 3. Handle 404 errors
+ErrorDocument 404 /404.html
+
+# 4. Security: Disable Directory Browsing
+Options -Indexes
+
+# 5. API Protection
+# Ensure PHP files in the api folder can be executed but not browsed
+<IfModule mod_rewrite.c>
+    RewriteRule ^api/.*\.php$ - [L]
+</IfModule>
