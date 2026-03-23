@@ -16,6 +16,13 @@ class CanonicalRedirect
     {
         $path = $request->getPathInfo();
 
+        // Admin requests are routed through Laravel from the _site webroot.
+        // On some proxy/CDN setups, Apache may normalize "/admin" -> "/admin/".
+        // Skipping canonical slash redirects for admin paths prevents redirect loops.
+        if (str_starts_with($path, '/admin')) {
+            return $next($request);
+        }
+
         // Strip trailing slash (except root "/")
         if ($path !== '/' && str_ends_with($path, '/')) {
             $canonical = rtrim($path, '/');
