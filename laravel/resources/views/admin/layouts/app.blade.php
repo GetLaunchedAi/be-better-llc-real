@@ -44,7 +44,7 @@
                     </div>
 
                     <div class="flex items-center gap-4">
-                        <span class="hidden sm:inline text-brand-300 text-xs">{{ auth()->user()->name }} ({{ auth()->user()->role }})</span>
+                        <span class="hidden sm:inline text-brand-300 text-xs">{{ auth()->user()?->name ?? 'Guest' }} ({{ auth()->user()?->role ?? '—' }})</span>
                         <form method="POST" action="{{ route('admin.logout') }}" class="inline">
                             @csrf
                             <button type="submit" class="text-sm text-brand-200 hover:text-white">Sign out</button>
