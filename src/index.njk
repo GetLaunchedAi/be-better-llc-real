@@ -12,24 +12,6 @@ description: Be Better storefront homepage.
 
 {{ hero(homepageContent.hero) }}
 
-<section id="youth" class="section section-home">
-  <div class="container">
-    {{ sectionHeader({
-      eyebrow: "SHOP BY CATEGORY",
-      title: products.youthCollection.title,
-      subtitle: "",
-      ctaText: "VIEW ALL",
-      ctaUrl: (products.youthCollection.ctaUrl | default("/collections/youth/"))
-    }) }}
-
-    <div class="product-grid product-grid--tight" aria-label="Youth Collection products">
-      {% for p in products.youthCollection.products %}
-        {{ productCard(p, { variant: "giveaway" }) }}
-      {% endfor %}
-    </div>
-  </div>
-</section>
-
 <section id="new-arrivals" class="section section-home section-home--tight">
   <div class="container">
     <div class="new-arrivals-banner" aria-label="New Arrivals banner">

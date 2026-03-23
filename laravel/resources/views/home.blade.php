@@ -11,8 +11,7 @@
     <div class="btn-row" style="justify-content:center; gap:1rem; flex-wrap:wrap;">
       <a class="btn btn-primary" href="/collections/men/">Shop Men</a>
       <a class="btn btn-primary" href="/collections/women/">Shop Women</a>
-      <a class="btn btn-primary" href="/collections/youth/">Shop Youth</a>
-      <a class="btn btn-outline" href="/collections/headwear/">Headwear</a>
+<a class="btn btn-outline" href="/collections/headwear/">Headwear</a>
       <a class="btn btn-outline" href="/collections/sale/">Sale</a>
     </div>
   </div>
