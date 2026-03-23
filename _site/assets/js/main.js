@@ -66,6 +66,49 @@
   close();
 })();
 
+// Dynamic nav — fetch nav items from API and replace static links
+(function () {
+  const primaryContainer = document.querySelector('[data-nav-primary]');
+  const metaContainer = document.querySelector('[data-nav-meta]');
+  if (!primaryContainer && !metaContainer) return;
+
+  const currentPath = window.location.pathname.replace(/\/$/, '');
+
+  function escapeHtml(str) {
+    const d = document.createElement('div');
+    d.textContent = str;
+    return d.innerHTML;
+  }
+
+  function buildPrimaryLink(item) {
+    const itemPath = item.url.replace(/\/$/, '');
+    const active = currentPath === itemPath ? ' is-active' : '';
+    return '<a class="nav-link nav-link--primary' + active + '" href="' + escapeHtml(item.url) + '">'
+      + escapeHtml(item.label) + ' <span class="nav-caret" aria-hidden="true"></span></a>';
+  }
+
+  function buildMetaLink(item) {
+    return '<a class="nav-link nav-link--muted" href="' + escapeHtml(item.url) + '">' + escapeHtml(item.label) + '</a>';
+  }
+
+  fetch('/nav-items.json', { cache: 'no-store' })
+    .then(function (r) { return r.json(); })
+    .then(function (data) {
+      if (primaryContainer && Array.isArray(data.primary)) {
+        var mobileLinks = '<a class="nav-link nav-link--mobileonly" href="/search/#focus">SEARCH</a>'
+          + '<a class="nav-link nav-link--mobileonly" href="/cart/">'
+          + 'CART <span class="cart-badge" data-cart-count aria-label="Cart items">0</span></a>';
+        primaryContainer.innerHTML = data.primary.map(buildPrimaryLink).join('') + mobileLinks;
+      }
+      if (metaContainer && Array.isArray(data.meta)) {
+        metaContainer.innerHTML = data.meta.map(buildMetaLink).join('');
+      }
+    })
+    .catch(function () {
+      // Keep static fallback links on fetch failure
+    });
+})();
+
 // Phase 3 enhancement
 // - Collection page client-side sorting (optional)
 (function () {
