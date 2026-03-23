@@ -101,6 +101,11 @@
             </thead>
             <tbody class="divide-y divide-gray-100">
                 @forelse($products as $product)
+                @php
+                    $safeStatus = is_string($product->status) && $product->status !== '' ? $product->status : 'draft';
+                    $safePrice = is_numeric($product->price) ? (float) $product->price : null;
+                    $safeCompareAt = is_numeric($product->compare_at) ? (float) $product->compare_at : null;
+                @endphp
                 <tr class="hover:bg-gray-50 transition-colors">
                     <td class="px-4 py-3">
                         <input type="checkbox" :value="{{ $product->id }}" x-model.number="selected" class="rounded border-gray-300" />
@@ -126,8 +131,8 @@
                                 'archived' => 'bg-gray-100 text-gray-600',
                             ];
                         @endphp
-                        <span class="inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium {{ $statusColors[$product->status] ?? 'bg-gray-100 text-gray-600' }}">
-                            {{ ucfirst($product->status) }}
+                        <span class="inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium {{ $statusColors[$safeStatus] ?? 'bg-gray-100 text-gray-600' }}">
+                            {{ ucfirst($safeStatus) }}
                         </span>
                     </td>
                     <td class="px-4 py-3 hidden sm:table-cell">
@@ -141,9 +146,13 @@
                         </div>
                     </td>
                     <td class="px-4 py-3 text-right">
-                        <span class="text-sm font-medium text-gray-900">${{ number_format($product->price, 2) }}</span>
-                        @if($product->compare_at)
-                            <span class="block text-xs text-gray-400 line-through">${{ number_format($product->compare_at, 2) }}</span>
+                        @if($safePrice !== null)
+                            <span class="text-sm font-medium text-gray-900">${{ number_format($safePrice, 2) }}</span>
+                        @else
+                            <span class="text-sm font-medium text-gray-500">-</span>
+                        @endif
+                        @if($safeCompareAt !== null)
+                            <span class="block text-xs text-gray-400 line-through">${{ number_format($safeCompareAt, 2) }}</span>
                         @endif
                     </td>
                     <td class="px-4 py-3 text-center hidden lg:table-cell">
